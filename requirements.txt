@@ -1,0 +1,6 @@
+pandas
+tweepy
+python-dotenv
+streamlit
+openpyxl
+requests

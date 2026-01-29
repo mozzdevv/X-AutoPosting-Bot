@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# Logs and State
+*.log
+bot_activity.json
+posted_history.json
+scheduler_state.json
+
+# OS
+.DS_Store
+
+# Data Files
+Final Sales List.*
+210jokes
