@@ -70,28 +70,23 @@ nohup ./.venv/bin/python main_bot.py &  # Daemonize
 ./.venv/bin/streamlit run dashboard.py  # http://localhost:8501
 ```
 
-## ☁️ Cloud Deployment (24/7 Run)
+## ♾️ Local Persistence (Automatic Startup)
 
-To run the bot 24/7 without your laptop needing to be on, deploy it to a Cloud VPS (e.g., [Render](https://render.com), [Fly.io](https://fly.io), or [DigitalOcean](https://digitalocean.com)).
+To ensure the bot starts automatically every time you log in to your Mac:
 
-### Using Docker
-1. **Build & Run Locally**:
+1. **Copy the configuration**:
    ```bash
-   docker-compose up --build -d
+   cp com.mazo.xautobot.plist ~/Library/LaunchAgents/
    ```
-2. **Cloud Upload**:
-   - Push this repo to GitHub.
-   - Connect your repo to **Render** or **Railway**.
-   - Set your `.env` variables in the cloud provider's dashboard.
-   - The `Dockerfile` will handle the rest.
+2. **Load the service**:
+   ```bash
+   launchctl load ~/Library/LaunchAgents/com.mazo.xautobot.plist
+   ```
 
-## ♾️ macOS Persistence (Local only)
-Launchd integration for reboot-proof operation:
-```bash
-cp com.mazo.xautobot.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.mazo.xautobot.plist
-```
-**Halt**: `launchctl unload ~/Library/LaunchAgents/com.mazo.xautobot.plist`
+**Verify**: Check your active tasks in the terminal: `launchctl list | grep xautobot`.
+**Stop**: `launchctl unload ~/Library/LaunchAgents/com.mazo.xautobot.plist`
+
+## 🗂️ Core Payload
 
 ## 🗂️ Core Payload
 - `main_bot.py`: Orchestrator/scheduler core.
