@@ -70,7 +70,22 @@ nohup ./.venv/bin/python main_bot.py &  # Daemonize
 ./.venv/bin/streamlit run dashboard.py  # http://localhost:8501
 ```
 
-## ♾️ Immortal Persistence (macOS)
+## ☁️ Cloud Deployment (24/7 Run)
+
+To run the bot 24/7 without your laptop needing to be on, deploy it to a Cloud VPS (e.g., [Render](https://render.com), [Fly.io](https://fly.io), or [DigitalOcean](https://digitalocean.com)).
+
+### Using Docker
+1. **Build & Run Locally**:
+   ```bash
+   docker-compose up --build -d
+   ```
+2. **Cloud Upload**:
+   - Push this repo to GitHub.
+   - Connect your repo to **Render** or **Railway**.
+   - Set your `.env` variables in the cloud provider's dashboard.
+   - The `Dockerfile` will handle the rest.
+
+## ♾️ macOS Persistence (Local only)
 Launchd integration for reboot-proof operation:
 ```bash
 cp com.mazo.xautobot.plist ~/Library/LaunchAgents/

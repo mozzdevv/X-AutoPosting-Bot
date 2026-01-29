@@ -32,7 +32,7 @@ class XAIClient:
         }
 
         try:
-            response = requests.post(self.api_url, headers=headers, json=data)
+            response = requests.post(self.api_url, headers=headers, json=data, timeout=60)
             response.raise_for_status()
             result = response.json()
             return result['choices'][0]['message']['content'].strip()
