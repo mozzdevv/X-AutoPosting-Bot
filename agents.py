@@ -27,7 +27,7 @@ class CreatorAgent:
         self.content_type = content_type
         self.xai = XAIWrapper()
         
-    def generate(self, trending_topics=None, retry_count=0, max_retries=3):
+    def generate(self, trending_topics=None, retry_count=0, max_retries=3, self_learning_context=None):
         """
         Generate content based on content_type
         
@@ -35,6 +35,7 @@ class CreatorAgent:
             trending_topics (list): Current trending topics to incorporate
             retry_count (int): Current retry attempt
             max_retries (int): Maximum retry attempts
+            self_learning_context (str): Context from successful past posts
             
         Returns:
             str: Generated post content
@@ -43,20 +44,51 @@ class CreatorAgent:
             return None
             
         trending_context = self._format_trending_topics(trending_topics)
+        learning_note = f"\n\nPAST SUCCESS CONTEXT (What users liked before):\n{self_learning_context}" if self_learning_context else ""
         
         if self.content_type == 'controversial':
-            prompt = self._get_controversial_prompt(trending_context)
+            prompt = self._get_controversial_prompt(trending_context) + learning_note
         elif self.content_type == 'relatable':
-            prompt = self._get_relatable_prompt(trending_context)
+            prompt = self._get_relatable_prompt(trending_context) + learning_note
         else:  # news_reaction
-            prompt = self._get_news_reaction_prompt(trending_context)
+            prompt = self._get_news_reaction_prompt(trending_context) + learning_note
             
         try:
             response = self.xai.generate_completion(prompt)
             return self._clean_response(response)
         except Exception as e:
             print(f"Generation error: {e}")
-            return self.generate(trending_topics, retry_count + 1, max_retries)
+            return self.generate(trending_topics, retry_count + 1, max_retries, self_learning_context)
+
+    def generate_reply(self, incoming_text, author_name):
+        """
+        Generate a reply to an incoming tweet
+        """
+        prompt = f"""You are the DevUnfiltered bot. Your persona is a senior dev who is sharp, opinionated, slightly arrogant, but highly knowledgeable. You are here to debate, roasts, or occasionally agree with logic-backed points.
+
+INCOMING TWEET from @{author_name}:
+"{incoming_text}"
+
+TASK:
+Write a reply that fits your "unfiltered" persona.
+- If they agree: Double down or add a sharper point.
+- If they disagree: Roast their logic (not them personally) or stand your ground firmly.
+- If they are trolling: Masterfully troll them back or dismiss them with a "cope".
+- STAY IN CHARACTER. Be shorter than 280 chars. 
+
+Rules:
+- NO "Change my mind" robotic endings.
+- Be context-aware.
+- Use casual but technical dev-speak.
+- NO EM-DASHES (—).
+
+REPLY:"""
+        try:
+            response = self.xai.generate_completion(prompt)
+            return self._clean_response(response)
+        except Exception as e:
+            print(f"Reply generation error: {e}")
+            return None
     
     def _format_trending_topics(self, topics):
         """Format trending topics for prompt injection"""
@@ -66,65 +98,60 @@ class CreatorAgent:
     
     def _get_controversial_prompt(self, trending_context):
         """Generate prompt for controversial opinion content"""
-        return f"""You are a senior developer with strong, data-backed opinions on software development practices.
+        return f"""You are a senior developer with highly polarizing, unfiltered, and potentially unpopular opinions on software development. You are tired of the "nice" echo chamber.
 
-Generate a controversial but defensible tech opinion post for X (Twitter) that will drive replies and engagement.
+Generate a SCATHINGLY CONTROVERSIAL but defensible tech opinion post for X (Twitter).
 
 RULES:
-- Start with "Unpopular opinion:" or "Hot take:" or "Controversial:" or "Real talk:"
-- Make a specific claim that challenges conventional wisdom
-- Provide 2-3 bullet points supporting your position
-- End with "What do you think? 🤔" or "Change my mind 👇" or "Fight me 🔥" or "Thoughts? 👀"
-- Keep total length under 280 characters
-- Use casual, conversational tone
-- Avoid generic takes - be SPECIFIC and data-driven
-- Must be defensible with real reasoning
+- Start with "Unpopular opinion:", "Hot take:", "Reality check:", or "Stop doing this:"
+- Be BRUTALLY HONEST. Don't sugarcoat it.
+- Challenge sacred cows (Clean Code, TDD, Agile, popular frameworks).
+- Provide 2-3 aggressive bullet points defending your stance.
+- **CRITICAL: VARY YOUR ENDING.** Do NOT default to "Change my mind 👇". That is robotic.
+- **DYNAMIC HOOKS:** contextually match the ending to the tone.
+    - If Arrogant: "I said what I said.", "You know I'm right.", "Cope harder.", "Cry about it."
+    - If Challenging: "Prove me wrong.", "Debate me.", "Am I wrong?", "Try to deny it."
+    - If Inquisitive: "Why do you disagree?", "Who limits themselves like this?"
+- **AVOID 👇 EMOJI** unless absolutely necessary. Use other emojis or none.
+- Keep total length under 280 characters.
+- NO NSFW, NO HATE SPEECH.
+- **NO EM-DASHES (—).** Use standard hyphens (-), colons (:), or just newlines.
 
-TOPICS TO CHOOSE FROM:
-- Framework debates (React vs Vue, TypeScript vs JavaScript, Next.js vs Remix)
-- Development practices (TDD, pair programming, code reviews, documentation)
-- Career advice (bootcamps vs degrees, job hopping, remote work, salary negotiation)
-- Tools and workflows (IDE choices, Git workflows, CI/CD, monorepo vs polyrepo)
-- AI coding assistants (Copilot, Cursor, ChatGPT, Claude)
-- Architecture decisions (microservices, monoliths, serverless)
-- Programming languages (Python vs Go, Rust hype, JavaScript fatigue)
+TOPICS TO ROAST:
+- Framework cults (React bloat, Tailwind ugliness)
+- "Best practices" waste (TDD, Clean Code obsessions)
+- Career lies (bootcamps, "passion" exploitation)
+- AI doom/hype (be realistic or scary)
 
 CURRENT TRENDING TOPICS:
 {trending_context}
 
-BAD EXAMPLES (too generic):
-"Unpopular opinion: Writing tests is good"
-"Hot take: You should learn to code"
-"Controversial: Documentation matters"
+GOOD EXAMPLES (Note the varied endings):
+"Hot take: TypeScript is a crutch for bad mental models.
 
-GOOD EXAMPLES:
-"Unpopular opinion: TypeScript is overkill for 90% of projects
+• Compile times kill flow
+• JSDoc > TS definitions
+• It's just Java with extra steps
 
-Here's why:
-• Most bugs aren't type-related
-• Adds dev friction for small teams  
-• Vanilla JS + good tests >>> TS + bad tests
+Prove me wrong."
 
-What do you think? 🤔"
+"Reality check: 'Building in public' is just procrastination.
 
-"Hot take: Bootcamps produce better junior devs than CS degrees in 2026
+• Revenue > Likes
+• Code > Content
+• Users don't care about your journey
 
-Why:
-• Practical skills > theory
-• Portfolio > GPA
-• Ship code faster
+I said what I said."
 
-Change my mind 👇"
+"Stop using Microservices for your MVP.
 
-"Real talk: Daily standups are productivity killers
+• You aren't Google
+• Network latency is real
+• Monoliths ship faster
 
-• Breaks flow state
-• Most updates belong in Slack
-• Async >>> sync for remote teams
+Why make your life hard available?"
 
-Thoughts? 👀"
-
-Generate ONE controversial opinion post now. Be specific, be bold, be defensible:"""
+Generate ONE highly polarizing post now. DYNAMIC ENDING REQUIRED:"""
 
     def _get_relatable_prompt(self, trending_context):
         """Generate prompt for relatable developer content"""
@@ -138,6 +165,7 @@ RULES:
 - Include a punchline or observation
 - End with engagement hook: "Who else? 👀" or "Just me? 🤷‍♂️" or "Relatable? 💀" or "Anyone else? 😅"
 - Keep under 280 characters
+- **NO EM-DASHES (—).** Use standard hyphens (-).
 - Avoid generic "coding is hard" - be SPECIFIC to a situation
 - Use humor, irony, or self-deprecation
 
@@ -204,6 +232,7 @@ RULES:
 - End with your hot take or prediction
 - Include engagement hook: "What do you think? 🤔" or "Thoughts? 👇"
 - Keep under 280 characters total
+- **NO EM-DASHES (—).** Use standard hyphens (-).
 - Be opinionated but informed
 - Focus on PRACTICAL implications for developers
 
@@ -413,6 +442,19 @@ Be harsh. Only exceptional posts should score 8+. Most posts should be 5-7."""
             'thoughts',
             'fight me',
             'anyone else',
+            'prove me wrong',
+            'am i wrong',
+            'i said what i said',
+            'cope',
+            'cry about it',
+            'debate me',
+            'agree',
+            'disagree',
+            'opinion',
+            'wrong',
+            'right',
+            'deny it',
+            'why',
         ]
         
         text_lower = text.lower()

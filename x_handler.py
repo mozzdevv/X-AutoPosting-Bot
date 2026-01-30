@@ -261,6 +261,81 @@ class XHandler:
         except Exception as e:
             print(f"❌ Error fetching account info: {e}")
             return None
+
+    def get_mentions(self, since_id=None):
+        """
+        Fetch recent mentions for the authenticated user
+        
+        Args:
+            since_id (str): Only fetch mentions newer than this ID
+            
+        Returns:
+            list: List of tweet objects
+        """
+        try:
+            user_info = self.get_account_info()
+            if not user_info:
+                return []
+                
+            response = self.client.get_users_mentions(
+                id=user_info['id'],
+                since_id=since_id,
+                tweet_fields=['author_id', 'created_at', 'text', 'public_metrics'],
+                max_results=20
+            )
+            
+            return response.data if response.data else []
+        except Exception as e:
+            print(f"❌ Error fetching mentions: {e}")
+            return []
+
+    def reply_to_tweet(self, tweet_id, text):
+        """
+        Reply to a specific tweet
+        
+        Args:
+            tweet_id (str): ID of the tweet to reply to
+            text (str): Reply content
+            
+        Returns:
+            str: URL of the reply tweet
+        """
+        try:
+            response = self.client.create_tweet(
+                text=text,
+                in_reply_to_tweet_id=tweet_id
+            )
+            
+            if response.data:
+                reply_id = response.data['id']
+                return f"https://x.com/DevUnfiltered/status/{reply_id}"
+            return None
+        except Exception as e:
+            print(f"❌ Error replying to tweet: {e}")
+            return None
+
+    def get_tweet_metrics(self, tweet_id):
+        """
+        Get public metrics (likes, retweets, etc.) for a tweet
+        
+        Args:
+            tweet_id (str): ID of the tweet
+            
+        Returns:
+            dict: Engagement metrics
+        """
+        try:
+            response = self.client.get_tweet(
+                id=tweet_id,
+                tweet_fields=['public_metrics']
+            )
+            
+            if response.data and 'public_metrics' in response.data:
+                return response.data['public_metrics']
+            return None
+        except Exception as e:
+            print(f"❌ Error fetching metrics: {e}")
+            return None
     
     def verify_credentials(self):
         """

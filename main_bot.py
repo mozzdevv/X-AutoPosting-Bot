@@ -15,13 +15,14 @@ from dotenv import load_dotenv
 from agents import CreatorAgent, ReviewerAgent
 from x_handler import XHandler
 from content_manager import TrendingTopicsManager
+from news_monitor import NewsMonitor
 
 # Load environment variables
 load_dotenv()
 
 # Configuration
-POST_FREQUENCY_HOURS_MIN = int(os.getenv('POST_FREQUENCY_HOURS_MIN', 4))
-POST_FREQUENCY_HOURS_MAX = int(os.getenv('POST_FREQUENCY_HOURS_MAX', 8))
+POST_FREQUENCY_HOURS_MIN = float(os.getenv('POST_FREQUENCY_HOURS_MIN', 0.33))
+POST_FREQUENCY_HOURS_MAX = float(os.getenv('POST_FREQUENCY_HOURS_MAX', 1.5))
 CONTROVERSIAL_WEIGHT = int(os.getenv('CONTROVERSIAL_WEIGHT', 70))
 RELATABLE_WEIGHT = int(os.getenv('RELATABLE_WEIGHT', 30))
 MIN_SCORE_THRESHOLD = int(os.getenv('MIN_SCORE_THRESHOLD', 8))
@@ -41,8 +42,11 @@ class EngagementBot:
         """Initialize bot with handlers and managers"""
         self.x_handler = XHandler()
         self.trending_manager = TrendingTopicsManager()
+        self.news_monitor = NewsMonitor()
         self.load_activity_log()
         self.load_posted_history()
+        self.last_mention_id = self.activity.get('last_mention_id')
+        self.learning_context = self.activity.get('learning_context', "")
         
     def load_activity_log(self):
         """Load or create activity log"""
@@ -56,7 +60,9 @@ class EngagementBot:
                 'failed_posts': 0,
                 'total_rejections': 0,
                 'last_post_time': None,
-                'next_post_time': None
+                'next_post_time': None,
+                'last_mention_id': None,
+                'learning_context': ""
             }
             self.save_activity_log()
     
@@ -113,6 +119,19 @@ class EngagementBot:
             'thoughts',
             'fight me',
             'anyone else',
+            'prove me wrong',
+            'am i wrong',
+            'i said what i said',
+            'cope',
+            'cry about it',
+            'debate me',
+            'agree',
+            'disagree',
+            'opinion',
+            'wrong',
+            'right',
+            'deny it',
+            'why',
         ]
         
         text_lower = text.lower()
@@ -121,13 +140,6 @@ class EngagementBot:
     def generate_and_review_post(self, content_type, trending_topics):
         """
         Generate post and review it, retry up to MAX_RETRIES times
-        
-        Args:
-            content_type (str): Type of content to generate
-            trending_topics (list): Current trending topics
-            
-        Returns:
-            tuple: (post_text, score, feedback) or (None, 0, "Failed")
         """
         creator = CreatorAgent(content_type=content_type)
         reviewer = ReviewerAgent(min_score=MIN_SCORE_THRESHOLD)
@@ -136,8 +148,11 @@ class EngagementBot:
             print(f"\n{'='*80}")
             print(f"Attempt {attempt + 1}/{MAX_RETRIES} - Generating {content_type} post...")
             
-            # Generate post
-            post_text = creator.generate(trending_topics=trending_topics)
+            # Generate post with learning context
+            post_text = creator.generate(
+                trending_topics=trending_topics, 
+                self_learning_context=self.learning_context
+            )
             
             if not post_text:
                 print(f"Generation failed on attempt {attempt + 1}")
@@ -165,6 +180,68 @@ class EngagementBot:
         
         print(f"\n⚠️  Failed to generate acceptable post after {MAX_RETRIES} attempts")
         return None, 0, "Max retries exceeded"
+
+    def run_reply_cycle(self):
+        """
+        Check for mentions and reply to them
+        """
+        print(f"\n💬 Checking for mentions since ID: {self.last_mention_id}")
+        mentions = self.x_handler.get_mentions(since_id=self.last_mention_id)
+        
+        if not mentions:
+            print("No new mentions.")
+            return
+
+        print(f"Found {len(mentions)} new mentions. Replying...")
+        creator = CreatorAgent() # Default persona
+
+        for tweet in mentions:
+            # Avoid replying to ourselves if somehow caught in loop
+            # author_id is an Int in some Tweepy versions, check it
+            
+            reply_text = creator.generate_reply(tweet.text, "User") # Author name extraction would be better if we had ID->Name map
+            if reply_text:
+                print(f"Generated Reply to @{tweet.author_id}: {reply_text}")
+                url = self.x_handler.reply_to_tweet(tweet.id, reply_text)
+                if url:
+                    print(f"✅ Replied successfully: {url}")
+                
+            self.last_mention_id = tweet.id
+            self.activity['last_mention_id'] = self.last_mention_id
+            self.save_activity_log()
+
+    def run_learning_cycle(self):
+        """
+        Check metrics of past posts and adjust learning context
+        """
+        print("\n🧠 Running learning cycle...")
+        if not self.history:
+            return
+
+        # Check latest 5 posts to see what gained traction
+        recent_posts = self.history[-5:]
+        top_performers = []
+
+        for post in recent_posts:
+            # We would normally use self.x_handler.get_tweet_metrics(post['id'])
+            # but for now we'll simulate or look for a 'url' that was saved
+            # Extract ID from URL
+            if 'url' in post:
+                tweet_id = post['url'].split('/')[-1]
+                metrics = self.x_handler.get_tweet_metrics(tweet_id)
+                if metrics:
+                    engagement = metrics.get('like_count', 0) + metrics.get('reply_count', 0) * 2
+                    if engagement >= 15: # User's threshold
+                        top_performers.append(f"Post: {post['post_text']} (Engagement: {engagement})")
+
+        if top_performers:
+            new_context = "\n".join(top_performers)
+            self.learning_context = f"Users are engaging well with these types of takes:\n{new_context}"
+            self.activity['learning_context'] = self.learning_context
+            self.save_activity_log()
+            print(f"✅ Learning updated with {len(top_performers)} successful patterns.")
+        else:
+            print("No high-engagement patterns found yet.")
     
     def log_rejection(self, post_text, score, feedback, content_type):
         """Log rejected post to activity"""
@@ -254,22 +331,22 @@ class EngagementBot:
         content_type = self.select_content_type()
         print(f"Content type selected: {content_type}")
         
-        # Get current trending topics
-        print("\nFetching trending topics...")
+        # Get current trending topics + Real-time news
+        print("\nFetching trending topics and real-world news...")
         trending_topics = self.x_handler.get_tech_trends(count=3)
-        print(f"Trending: {trending_topics}")
+        real_news = self.news_monitor.get_top_tech_news(limit=3)
         
-        # Check if we should use fresh topics
-        fresh_topics = [t for t in trending_topics if self.trending_manager.is_fresh_topic(t)]
-        if fresh_topics:
-            selected_topics = fresh_topics
-        else:
-            # Use evergreen topics if all trends are stale
+        combined_context = trending_topics + real_news
+        print(f"Combined Context: {combined_context}")
+        
+        # Filter for fresh topics
+        selected_topics = [t for t in combined_context if self.trending_manager.is_fresh_topic(t)]
+        if not selected_topics:
             selected_topics = self.trending_manager.get_topic_suggestions()[:3]
         
         print(f"Selected topics for generation: {selected_topics}")
         
-        # Generate and review post
+        # Generate and review post with learning context
         post_text, score, feedback = self.generate_and_review_post(content_type, selected_topics)
         
         if post_text is None:
@@ -309,43 +386,53 @@ class EngagementBot:
     
     def run(self):
         """
-        Main bot loop - runs indefinitely with random delays
+        Main bot loop - runs indefinitely with dynamic cycles
         """
-        print("🤖 DevUnfiltered Bot Starting...")
+        print(f"\n{'='*80}")
+        print("🔥 DEVUNFILTERED BOT IS ONLINE")
         print(f"Config: {CONTROVERSIAL_WEIGHT}% controversial, {RELATABLE_WEIGHT}% relatable")
-        print(f"Posting every {POST_FREQUENCY_HOURS_MIN}-{POST_FREQUENCY_HOURS_MAX} hours")
-        print(f"Minimum score threshold: {MIN_SCORE_THRESHOLD}/10")
-        print("\n" + "="*80)
+        print(f"Posting frequency: {POST_FREQUENCY_HOURS_MIN}-{POST_FREQUENCY_HOURS_MAX} hours")
+        print(f"{'='*80}\n")
         
         while True:
             try:
-                # Run posting cycle
-                success = self.run_posting_cycle()
+                # 1. ALWAYS check for mentions and reply first
+                self.run_reply_cycle()
                 
-                # Calculate next post time
-                delay_seconds = self.calculate_next_post_time()
-                delay_hours = delay_seconds / 3600
+                # 2. Determine if it's time to post
+                now = datetime.now()
+                next_post_str = self.activity.get('next_post_time')
                 
-                next_post_time = datetime.fromtimestamp(time.time() + delay_seconds)
-                
-                print(f"\n{'='*80}")
-                if success:
-                    print(f"✅ Cycle complete. Next post in {delay_hours:.2f} hours")
+                should_post = False
+                if not next_post_str:
+                    should_post = True
                 else:
-                    print(f"⚠️  Cycle failed. Retrying in {delay_hours:.2f} hours")
-                print(f"Next post scheduled for: {next_post_time.strftime('%Y-%m-%d %H:%M:%S')}")
-                print(f"{'='*80}\n")
+                    next_post = datetime.fromisoformat(next_post_str)
+                    if now >= next_post:
+                        should_post = True
                 
-                # Sleep until next post
-                time.sleep(delay_seconds)
+                if should_post:
+                    print("\n🕒 Time for a new post!")
+                    success = self.run_posting_cycle()
+                    
+                    # 3. Run learning cycle to analyze recent performance
+                    self.run_learning_cycle()
+                    
+                    # 4. Schedule next post
+                    delay_seconds = self.calculate_next_post_time()
+                    print(f"Next post scheduled for: {self.activity['next_post_time']}")
+                
+                # Sleep in 5-minute increments to stay reactive to replies
+                # while waiting for the next scheduled post
+                print("... (Idle: Checking mentions again in 5 mins) ...")
+                time.sleep(300) # 5 minutes
                 
             except KeyboardInterrupt:
                 print("\n\n🛑 Bot stopped by user")
                 break
             except Exception as e:
                 print(f"\n⚠️  Unexpected error in main loop: {e}")
-                print("Waiting 1 hour before retry...")
-                time.sleep(3600)
+                time.sleep(60) # Wait a bit before retry
 
 
 def main():

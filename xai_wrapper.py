@@ -33,7 +33,7 @@ class XAIWrapper:
         }
         
         data = {
-            "model": "grok-2-latest",  # Using a reliable model identifier
+            "model": "grok-4-1-fast-reasoning",  # Updated as per user request
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}

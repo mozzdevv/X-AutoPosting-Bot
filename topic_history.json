@@ -1,4 +1,105 @@
 {
-  "topics": [],
-  "last_updated": "2026-01-30T00:20:03.475119"
+  "topics": [
+    {
+      "topic": "Job hopping strategy",
+      "timestamp": "2026-01-30T00:27:03.897399"
+    },
+    {
+      "topic": "Angular still relevant?",
+      "timestamp": "2026-01-30T00:27:03.897810"
+    },
+    {
+      "topic": "Clean code principles",
+      "timestamp": "2026-01-30T00:27:03.898123"
+    },
+    {
+      "topic": "Developer burnout",
+      "timestamp": "2026-01-30T00:28:08.121107"
+    },
+    {
+      "topic": "Developer productivity metrics",
+      "timestamp": "2026-01-30T00:28:08.121721"
+    },
+    {
+      "topic": "Claude vs ChatGPT for code",
+      "timestamp": "2026-01-30T00:28:08.122131"
+    },
+    {
+      "topic": "Tech layoffs 2026",
+      "timestamp": "2026-01-30T00:30:20.191971"
+    },
+    {
+      "topic": "Documentation vs code quality",
+      "timestamp": "2026-01-30T00:30:20.192578"
+    },
+    {
+      "topic": "AI replacing junior devs",
+      "timestamp": "2026-01-30T00:30:20.193044"
+    },
+    {
+      "topic": "Remote work culture",
+      "timestamp": "2026-01-30T00:30:39.991055"
+    },
+    {
+      "topic": "Web3 still a thing?",
+      "timestamp": "2026-01-30T00:30:39.991396"
+    },
+    {
+      "topic": "AI agents coding",
+      "timestamp": "2026-01-30T00:35:56.030262"
+    },
+    {
+      "topic": "Salary transparency",
+      "timestamp": "2026-01-30T00:35:56.031200"
+    },
+    {
+      "topic": "Microservices vs monolith",
+      "timestamp": "2026-01-30T00:35:56.031955"
+    },
+    {
+      "topic": "Developer burnout",
+      "timestamp": "2026-01-30T00:37:17.860611"
+    },
+    {
+      "topic": "Big Tech vs startups",
+      "timestamp": "2026-01-30T00:37:17.861307"
+    },
+    {
+      "topic": "Rust hype cycle",
+      "timestamp": "2026-01-30T00:37:17.861840"
+    },
+    {
+      "topic": "Quantum computing timeline",
+      "timestamp": "2026-01-30T00:51:18.136477"
+    },
+    {
+      "topic": "CI/CD best practices",
+      "timestamp": "2026-01-30T00:51:18.137036"
+    },
+    {
+      "topic": "Hacker News: Moltbook (https://www.moltbook.com/)",
+      "timestamp": "2026-01-30T00:51:18.137749"
+    },
+    {
+      "topic": "Hacker News: Grid: Free, local-first, browser-based 3D printing/CNC/laser slicer (https://grid.space/stem/)",
+      "timestamp": "2026-01-30T00:51:18.138184"
+    },
+    {
+      "topic": "Hacker News: The Dank Case for Scrolling Window Managers (https://tedium.co/2026/01/29/niri-danklinux-scrolling-window-managers/)",
+      "timestamp": "2026-01-30T00:51:18.138588"
+    },
+    {
+      "topic": "GitHub Trend: VoltAgent/awesome-moltbot-skills (None, 3602 stars) - The awesome collection of Moltbot Skills. (Clawdbot has officially been renamed to Moltbot)",
+      "timestamp": "2026-01-30T00:51:18.138992"
+    },
+    {
+      "topic": "GitHub Trend: lukilabs/beautiful-mermaid (TypeScript, 2709 stars) - None",
+      "timestamp": "2026-01-30T00:51:18.139387"
+    },
+    {
+      "topic": "GitHub Trend: forrestchang/andrej-karpathy-skills (None, 2378 stars) - None",
+      "timestamp": "2026-01-30T00:51:18.139956"
+    }
+  ],
+  "last_updated": "2026-01-30T00:51:18.139960"
 }
