@@ -62,7 +62,8 @@ class EngagementBot:
                 'last_post_time': None,
                 'next_post_time': None,
                 'last_mention_id': None,
-                'learning_context': ""
+                'learning_context': "",
+                'reply_tracking': {}
             }
             self.save_activity_log()
     
@@ -183,7 +184,9 @@ class EngagementBot:
 
     def run_reply_cycle(self):
         """
-        Check for mentions and reply to them
+        Check for mentions and reply to them with rate limiting
+        - Max 1 reply per incoming tweet
+        - Max 2 replies to the same user per conversation thread
         """
         print(f"\n💬 Checking for mentions since ID: {self.last_mention_id}")
         mentions = self.x_handler.get_mentions(since_id=self.last_mention_id)
@@ -192,22 +195,39 @@ class EngagementBot:
             print("No new mentions.")
             return
 
-        print(f"Found {len(mentions)} new mentions. Replying...")
-        creator = CreatorAgent() # Default persona
+        print(f"Found {len(mentions)} new mentions. Processing limits...")
+        creator = CreatorAgent()
+
+        tracking = self.activity.get('reply_tracking', {})
 
         for tweet in mentions:
-            # Avoid replying to ourselves if somehow caught in loop
-            # author_id is an Int in some Tweepy versions, check it
+            # Metadata for limiting
+            author_id = str(tweet.author_id)
+            # conversation_id is available in v2 tweet objects usually if requested, 
+            # if not we use the root tweet id or a combination
+            conv_id = str(getattr(tweet, 'conversation_id', tweet.id))
+            track_key = f"{conv_id}_{author_id}"
             
-            reply_text = creator.generate_reply(tweet.text, "User") # Author name extraction would be better if we had ID->Name map
+            # Check if we've already replied twice to this user in this thread
+            current_count = tracking.get(track_key, 0)
+            
+            if current_count >= 2:
+                print(f"⏹️  Skipping @{author_id} - Max replies (2) reached for this thread.")
+                self.last_mention_id = tweet.id
+                continue
+
+            reply_text = creator.generate_reply(tweet.text, "User")
             if reply_text:
-                print(f"Generated Reply to @{tweet.author_id}: {reply_text}")
+                print(f"Generated Reply to @{author_id}: {reply_text}")
                 url = self.x_handler.reply_to_tweet(tweet.id, reply_text)
                 if url:
                     print(f"✅ Replied successfully: {url}")
+                    # Update tracking
+                    tracking[track_key] = current_count + 1
                 
             self.last_mention_id = tweet.id
             self.activity['last_mention_id'] = self.last_mention_id
+            self.activity['reply_tracking'] = tracking
             self.save_activity_log()
 
     def run_learning_cycle(self):
