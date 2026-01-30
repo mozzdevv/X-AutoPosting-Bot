@@ -10,7 +10,7 @@ LOG_FILE = "bot_activity.json"
 HISTORY_FILE = "posted_history.json"
 
 st.title("🤖 X AutoBot Dashboard")
-st.caption("Monitoring @SaasSexy98662")
+st.caption("Monitoring @devjokesautobot")
 
 col1, col2 = st.columns(2)
 

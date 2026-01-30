@@ -1,0 +1,9 @@
+Slightly Longer Dad/Punny Tech Jokes (from shorter base):
+
+1. programmer therapy? bugs in his life and infinite loop of bad commits
+2. api dad joke: netflix password? 401 unauthorized, beg harder kid
+3. git pr to dad: merge this? first resolve ex branch conflicts
+4. docker cramped container: dad layers stack like family issues
+5. k8s pod evicted: dad oof quota again, share cpu better eh
+
+Balanced short-medium puns.

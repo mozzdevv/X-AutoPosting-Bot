@@ -1,0 +1,10 @@
+Dad/Punny Tech Jokes Samples (corny puns on dev terms/context, lowercase style):
+
+1. why did the programmer quit? couldn't find any bugs just features
+2. api call to dad: son you're unauthorized 401
+3. git pull request: dad can i merge lives
+4. docker container: dad i'm feeling a bit confined
+5. k8s pod evicted: dad kicked me out again
+
+Pun/corny dad jokes with tech twist, hilarious nerdy.
+Incorporate into files/prompts?

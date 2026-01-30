@@ -1,0 +1,9 @@
+Medium Length Dad/Punny Tech Jokes (balanced 2-3 sentences, corny fun):
+
+1. why did the programmer go to therapy? too many bugs in his personal life, but the real killer was the infinite loop of bad commits
+2. api dad joke: son wants netflix password, dad says 401 unauthorized, try begging harder next time
+3. git to dad: can i merge this pr? dad: first resolve those conflicts from your ex branch
+4. docker kid: dad this container is cramped. dad: son, layers are like family, they stack up
+5. k8s pod evicted: dad why again? dad: oof resources, learn to share cpu nicer eh
+
+Medium hilarious puns.

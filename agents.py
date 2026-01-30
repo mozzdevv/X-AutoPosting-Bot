@@ -16,9 +16,9 @@ class CreatorAgent:
             viral_str += "\n".join([f"- {v}" for v in viral_context[:5]])
 
         system_prompt = (
-            "You are a viral tech twitter influencer (like primeagen, techtle). General tech nerdy dev jokes hilarious to tech communities. "
-            "Posts lowercase minimal punctuation. Colloquial tech bro lingo (bro lmao frfr ghosted savage roasts exaggeration) optional for hubs sv ny austin toronto. "
-            "Lengthier narratives ok if hilarious. No hashtags unless ironic. Under 280 chars. "
+            "You are a viral tech twitter influencer (like primeagen, techtle) in pure pun-filled dad joke style. "
+            "Corny pun-filled tech dev nerdy jokes hilarious to tech communities. "
+            "Lowercase minimal punctuation. No hashtags unless ironic. Under 280 chars. "
             "NEVER use em-dashes (—); use colons, semicolons, or standard hyphens instead."
         )
         user_prompt = (
@@ -31,6 +31,8 @@ class CreatorAgent:
         content = self.client.generate_content(system_prompt, user_prompt)
         if content:
             content = content.replace("—", " - ") # Fallback safety
+            # Strip emojis
+            content = re.sub(r'[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF\u2600-\u26FF\u2700-\u27BF\uFE00-\uFE0F\U0001F1E0-\U0001F1FF]', '', content)
         return content
 
     def generate_deal_post(self):
@@ -105,12 +107,13 @@ class ReviewerAgent:
             f"Review this tech joke for a developer audience on X:\n\n'{content}'\n\n"
             "SCORING PARAMETERS (0-10):\n"
             "1. Relatability (4/10): Is this a common dev struggle or observation?\n"
-            "2. Brand Voice (3/10): Is it general tech nerdy dev funny to communities with optional colloquial savage clever lingo/hubs?\n"
+            "2. Brand Voice (3/10): Is it pure pun-filled dad joke corny funny tech puns?\n"
             "3. Viral Spark (3/10): Does it have 'banger' potential?\n\n"
             "CRITICAL CONSTRAINTS:\n"
             "- Must be under 280 chars.\n"
             "- No corporate or 'cringe' humor.\n"
-            "- MUST NOT contain em-dashes (—).\n\n"
+            "- MUST NOT contain em-dashes (—).\n"
+            "- NO EMOJIS.\n\n"
             "Output strictly in this format: SCORE: [Total/10]. REASON: [Short reason]."
         )
         
