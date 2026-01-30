@@ -1,6 +1,25 @@
-pandas
-tweepy
-python-dotenv
-streamlit
-openpyxl
-requests
+# Core dependencies for DevUnfiltered Bot
+# Updated for high-engagement content strategy
+
+# X (Twitter) API
+tweepy==4.14.0
+
+# xAI Grok API
+openai==1.12.0  # xAI uses OpenAI-compatible SDK
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Data handling
+pandas==2.1.4
+
+# Dashboard (Streamlit)
+streamlit==1.30.0
+plotly==5.18.0
+
+# HTTP requests
+requests==2.31.0
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2023.3

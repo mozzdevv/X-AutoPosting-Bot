@@ -1,153 +1,358 @@
+"""
+Updated main_bot.py - High-Engagement Content Strategy
+Posts 2-3 times daily with 4-8 hour delays between posts
+70% controversial opinions, 30% relatable content
+"""
+
 import os
-import random
 import time
+import random
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
-from content_manager import ContentManager
-from xai_wrapper import XAIClient
-from x_handler import XHandler
+# Import updated modules
 from agents import CreatorAgent, ReviewerAgent
+from x_handler import XHandler
+from content_manager import TrendingTopicsManager
 
-# Load Env
+# Load environment variables
 load_dotenv()
 
 # Configuration
-LOG_FILE = "bot_activity.json"
-HISTORY_FILE = "posted_history.json"
+POST_FREQUENCY_HOURS_MIN = int(os.getenv('POST_FREQUENCY_HOURS_MIN', 4))
+POST_FREQUENCY_HOURS_MAX = int(os.getenv('POST_FREQUENCY_HOURS_MAX', 8))
+CONTROVERSIAL_WEIGHT = int(os.getenv('CONTROVERSIAL_WEIGHT', 70))
+RELATABLE_WEIGHT = int(os.getenv('RELATABLE_WEIGHT', 30))
+MIN_SCORE_THRESHOLD = int(os.getenv('MIN_SCORE_THRESHOLD', 8))
+MAX_RETRIES = 3
 
-def load_history():
-    if os.path.exists(HISTORY_FILE):
-        with open(HISTORY_FILE, 'r') as f:
-            return json.load(f)
-    return []
+# File paths
+ACTIVITY_LOG = 'bot_activity.json'
+POSTED_HISTORY = 'posted_history.json'
 
-def save_history(history):
-    with open(HISTORY_FILE, 'w') as f:
-        json.dump(history, f, indent=2)
 
-def log_activity(entry):
-    """Logs activity to a JSON file for the dashboard"""
-    logs = []
-    if os.path.exists(LOG_FILE):
+class EngagementBot:
+    """
+    Main bot orchestrator for high-engagement X posting
+    """
+    
+    def __init__(self):
+        """Initialize bot with handlers and managers"""
+        self.x_handler = XHandler()
+        self.trending_manager = TrendingTopicsManager()
+        self.load_activity_log()
+        self.load_posted_history()
+        
+    def load_activity_log(self):
+        """Load or create activity log"""
         try:
-            with open(LOG_FILE, 'r') as f:
-                logs = json.load(f)
-        except:
-            logs = []
+            with open(ACTIVITY_LOG, 'r') as f:
+                self.activity = json.load(f)
+        except FileNotFoundError:
+            self.activity = {
+                'total_posts': 0,
+                'successful_posts': 0,
+                'failed_posts': 0,
+                'total_rejections': 0,
+                'last_post_time': None,
+                'next_post_time': None
+            }
+            self.save_activity_log()
     
-    # Add timestamp
-    entry['timestamp'] = datetime.now().isoformat()
-    logs.insert(0, entry) # Prepend for latest first
+    def save_activity_log(self):
+        """Save activity log to file"""
+        with open(ACTIVITY_LOG, 'w') as f:
+            json.dump(self.activity, f, indent=2)
     
-    # Keep last 100 logs
-    logs = logs[:100]
+    def load_posted_history(self):
+        """Load or create posted history"""
+        try:
+            with open(POSTED_HISTORY, 'r') as f:
+                self.history = json.load(f)
+        except FileNotFoundError:
+            self.history = []
+            self.save_posted_history()
     
-    with open(LOG_FILE, 'w') as f:
-        json.dump(logs, f, indent=2)
+    def save_posted_history(self):
+        """Save posted history to file"""
+        with open(POSTED_HISTORY, 'w') as f:
+            json.dump(self.history, f, indent=2)
+    
+    def select_content_type(self):
+        """
+        Select content type based on weighted random selection
+        
+        Returns:
+            str: 'controversial' or 'relatable'
+        """
+        return random.choices(
+            ['controversial', 'relatable'],
+            weights=[CONTROVERSIAL_WEIGHT, RELATABLE_WEIGHT],
+            k=1
+        )[0]
+    
+    def has_engagement_hook(self, text):
+        """
+        Check if post has engagement-driving elements
+        
+        Args:
+            text (str): Post text to check
+            
+        Returns:
+            bool: True if has engagement hook
+        """
+        hooks = [
+            '?',  # Questions drive replies
+            '👇', '👀', '🤔', '🤷‍♂️', '💀', '🔥', '😅',  # Engagement emojis
+            'what do you think',
+            'change my mind',
+            'who else',
+            'relatable',
+            'just me',
+            'thoughts',
+            'fight me',
+            'anyone else',
+        ]
+        
+        text_lower = text.lower()
+        return any(hook in text_lower for hook in hooks)
+    
+    def generate_and_review_post(self, content_type, trending_topics):
+        """
+        Generate post and review it, retry up to MAX_RETRIES times
+        
+        Args:
+            content_type (str): Type of content to generate
+            trending_topics (list): Current trending topics
+            
+        Returns:
+            tuple: (post_text, score, feedback) or (None, 0, "Failed")
+        """
+        creator = CreatorAgent(content_type=content_type)
+        reviewer = ReviewerAgent(min_score=MIN_SCORE_THRESHOLD)
+        
+        for attempt in range(MAX_RETRIES):
+            print(f"\n{'='*80}")
+            print(f"Attempt {attempt + 1}/{MAX_RETRIES} - Generating {content_type} post...")
+            
+            # Generate post
+            post_text = creator.generate(trending_topics=trending_topics)
+            
+            if not post_text:
+                print(f"Generation failed on attempt {attempt + 1}")
+                continue
+            
+            print(f"Generated: {post_text}")
+            print(f"Length: {len(post_text)} chars")
+            
+            # Review post
+            score, feedback = reviewer.evaluate(post_text, content_type=content_type)
+            
+            print(f"\nReview Score: {score}/{MIN_SCORE_THRESHOLD}")
+            print(f"Feedback:\n{feedback}")
+            
+            # Check if post passes threshold AND has engagement hook
+            has_hook = self.has_engagement_hook(post_text)
+            print(f"Has engagement hook: {has_hook}")
+            
+            if reviewer.passes_threshold(score) and has_hook:
+                print(f"✅ POST APPROVED - Score: {score}, Has Hook: {has_hook}")
+                return post_text, score, feedback
+            else:
+                print(f"❌ POST REJECTED - Score: {score}, Has Hook: {has_hook}")
+                self.log_rejection(post_text, score, feedback, content_type)
+        
+        print(f"\n⚠️  Failed to generate acceptable post after {MAX_RETRIES} attempts")
+        return None, 0, "Max retries exceeded"
+    
+    def log_rejection(self, post_text, score, feedback, content_type):
+        """Log rejected post to activity"""
+        self.activity['total_rejections'] += 1
+        
+        rejection_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'content_type': content_type,
+            'post_text': post_text,
+            'score': score,
+            'feedback': feedback
+        }
+        
+        if 'rejections' not in self.activity:
+            self.activity['rejections'] = []
+        
+        # Keep only last 50 rejections
+        self.activity['rejections'].append(rejection_entry)
+        if len(self.activity['rejections']) > 50:
+            self.activity['rejections'] = self.activity['rejections'][-50:]
+        
+        self.save_activity_log()
+    
+    def log_success(self, post_text, score, feedback, content_type, post_url):
+        """Log successful post to history"""
+        success_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'content_type': content_type,
+            'post_text': post_text,
+            'score': score,
+            'feedback': feedback,
+            'url': post_url
+        }
+        
+        self.history.append(success_entry)
+        self.save_posted_history()
+        
+        self.activity['successful_posts'] += 1
+        self.activity['last_post_time'] = datetime.now().isoformat()
+        self.save_activity_log()
+    
+    def log_failure(self, post_text, error, content_type):
+        """Log failed post attempt"""
+        self.activity['failed_posts'] += 1
+        
+        failure_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'content_type': content_type,
+            'post_text': post_text,
+            'error': str(error)
+        }
+        
+        if 'failures' not in self.activity:
+            self.activity['failures'] = []
+        
+        # Keep only last 50 failures
+        self.activity['failures'].append(failure_entry)
+        if len(self.activity['failures']) > 50:
+            self.activity['failures'] = self.activity['failures'][-50:]
+        
+        self.save_activity_log()
+    
+    def calculate_next_post_time(self):
+        """Calculate random delay for next post (4-8 hours)"""
+        delay_hours = random.uniform(POST_FREQUENCY_HOURS_MIN, POST_FREQUENCY_HOURS_MAX)
+        next_post_time = datetime.now() + timedelta(hours=delay_hours)
+        
+        self.activity['next_post_time'] = next_post_time.isoformat()
+        self.save_activity_log()
+        
+        return delay_hours * 3600  # Convert to seconds
+    
+    def run_posting_cycle(self):
+        """
+        Execute one posting cycle:
+        1. Select content type
+        2. Get trending topics
+        3. Generate and review post
+        4. Post if approved
+        5. Log results
+        """
+        print(f"\n{'='*80}")
+        print(f"🚀 STARTING POSTING CYCLE at {datetime.now().isoformat()}")
+        print(f"{'='*80}")
+        
+        # Select content type (70% controversial, 30% relatable)
+        content_type = self.select_content_type()
+        print(f"Content type selected: {content_type}")
+        
+        # Get current trending topics
+        print("\nFetching trending topics...")
+        trending_topics = self.x_handler.get_tech_trends(count=3)
+        print(f"Trending: {trending_topics}")
+        
+        # Check if we should use fresh topics
+        fresh_topics = [t for t in trending_topics if self.trending_manager.is_fresh_topic(t)]
+        if fresh_topics:
+            selected_topics = fresh_topics
+        else:
+            # Use evergreen topics if all trends are stale
+            selected_topics = self.trending_manager.get_topic_suggestions()[:3]
+        
+        print(f"Selected topics for generation: {selected_topics}")
+        
+        # Generate and review post
+        post_text, score, feedback = self.generate_and_review_post(content_type, selected_topics)
+        
+        if post_text is None:
+            print("\n❌ CYCLE FAILED - Could not generate acceptable post")
+            return False
+        
+        # Attempt to post to X
+        print(f"\n📤 Attempting to post to X...")
+        try:
+            post_url = self.x_handler.post_tweet(post_text)
+            
+            if post_url:
+                print(f"\n✅ POST SUCCESSFUL!")
+                print(f"URL: {post_url}")
+                print(f"Content: {post_text}")
+                
+                # Log success
+                self.log_success(post_text, score, feedback, content_type, post_url)
+                
+                # Track topics used
+                for topic in selected_topics:
+                    self.trending_manager.add_topic(topic)
+                
+                self.activity['total_posts'] += 1
+                self.save_activity_log()
+                
+                return True
+            else:
+                print("\n❌ POST FAILED - X API returned no URL")
+                self.log_failure(post_text, "No URL returned from X API", content_type)
+                return False
+                
+        except Exception as e:
+            print(f"\n❌ POST FAILED - Exception: {e}")
+            self.log_failure(post_text, e, content_type)
+            return False
+    
+    def run(self):
+        """
+        Main bot loop - runs indefinitely with random delays
+        """
+        print("🤖 DevUnfiltered Bot Starting...")
+        print(f"Config: {CONTROVERSIAL_WEIGHT}% controversial, {RELATABLE_WEIGHT}% relatable")
+        print(f"Posting every {POST_FREQUENCY_HOURS_MIN}-{POST_FREQUENCY_HOURS_MAX} hours")
+        print(f"Minimum score threshold: {MIN_SCORE_THRESHOLD}/10")
+        print("\n" + "="*80)
+        
+        while True:
+            try:
+                # Run posting cycle
+                success = self.run_posting_cycle()
+                
+                # Calculate next post time
+                delay_seconds = self.calculate_next_post_time()
+                delay_hours = delay_seconds / 3600
+                
+                next_post_time = datetime.fromtimestamp(time.time() + delay_seconds)
+                
+                print(f"\n{'='*80}")
+                if success:
+                    print(f"✅ Cycle complete. Next post in {delay_hours:.2f} hours")
+                else:
+                    print(f"⚠️  Cycle failed. Retrying in {delay_hours:.2f} hours")
+                print(f"Next post scheduled for: {next_post_time.strftime('%Y-%m-%d %H:%M:%S')}")
+                print(f"{'='*80}\n")
+                
+                # Sleep until next post
+                time.sleep(delay_seconds)
+                
+            except KeyboardInterrupt:
+                print("\n\n🛑 Bot stopped by user")
+                break
+            except Exception as e:
+                print(f"\n⚠️  Unexpected error in main loop: {e}")
+                print("Waiting 1 hour before retry...")
+                time.sleep(3600)
+
 
 def main():
-    print("🚀 X AutoBot Continuous Mode Started!")
-    
-    # Initialize Components
-    content_manager = ContentManager()
-    xai_client = XAIClient()
-    x_handler = XHandler()
-    
-    creator = CreatorAgent(xai_client, content_manager)
-    reviewer = ReviewerAgent(xai_client)
-    
-    while True:
-        print(f"\n--- New Cycle Started at {datetime.now().strftime('%H:%M:%S')} ---")
-        
-        # Decision: Joke (90%) or Deal (10%)
-        is_deal = random.random() < 0.1
-        post_type = "DEAL" if is_deal else "JOKE"
-        
-        print(f"Goal: Post a {post_type}")
-        
-        # Attempt Loop (Max 3 retries)
-        max_retries = 3
-        final_post = None
-        
-        for attempt in range(max_retries):
-            log_entry = {"type": post_type, "attempt": attempt+1, "status": "processing"}
-            
-            # 1. Generate
-            print(f"Generating content (Attempt {attempt+1})...")
-            if is_deal:
-                content = creator.generate_deal_post()
-            else:
-                # Sense viral trends on every joke cycle to stay fresh
-                viral_trends = x_handler.search_dev_jokes()
-                content = creator.generate_joke(viral_context=viral_trends)
-                
-            if not content:
-                print("Generation failed.")
-                log_entry["status"] = "generation_failed"
-                log_activity(log_entry)
-                continue
-                
-            # 2. Review
-            print(f"Reviewing: {content[:50].replace('\n', ' ')}...")
-            if is_deal:
-                score, reason = reviewer.review_deal(content)
-            else:
-                score, reason = reviewer.review_joke(content)
-            print(f"Score: {score}/10 - {reason}")
-            
-            log_entry["content"] = content
-            log_entry["score"] = score
-            log_entry["reason"] = reason
-            
-            if score >= 8:
-                print("APPROVED!")
-                final_post = content
-                log_entry["status"] = "approved"
-                log_activity(log_entry)
-                break
-            else:
-                print("REJECTED. Retrying...")
-                log_entry["status"] = "rejected"
-                log_activity(log_entry)
-                time.sleep(5) # Brief pause before retry
-        
-        # 3. Post to X
-        if final_post:
-            print("Posting to X...")
-            result = x_handler.post_tweet(final_post)
-            
-            if result['status'] == 'success':
-                print("Successfully Posted!")
-                # Update History
-                history = load_history()
-                history.append({"content": final_post, "timestamp": datetime.now().isoformat(), "type": post_type})
-                save_history(history)
-                
-                # Final Log
-                log_activity({"type": post_type, "status": "posted", "content": final_post, "x_response": str(result['data'])})
-            else:
-                print(f"X Post Failed: {result['message']}")
-                log_activity({"type": post_type, "status": "posting_error", "error": result['message'], "content": final_post})
-        else:
-            print("Failed to generate an approved post after max retries.")
+    """Entry point for bot"""
+    bot = EngagementBot()
+    bot.run()
 
-        # --- RANDOMIZED SLEEP ---
-        # Min: 25 minutes (1500 sec)
-        # Max: 2 hours (7200 sec)
-        sleep_seconds = random.randint(1500, 7200)
-        next_run = datetime.now() + timedelta(seconds=sleep_seconds)
-        
-        print(f"Sleeping for {sleep_seconds // 60} minutes...")
-        print(f"Next post will be attempted at: {next_run.strftime('%H:%M:%S')}")
-        
-        # Store state for dashboard
-        with open("scheduler_state.json", "w") as f:
-            json.dump({"next_run": next_run.isoformat(), "last_run": datetime.now().isoformat()}, f)
-            
-        time.sleep(sleep_seconds)
 
 if __name__ == "__main__":
-    from datetime import timedelta
     main()

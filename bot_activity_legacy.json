@@ -1,0 +1,846 @@
+[
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "hono by honojs  \nhono my hono hono to death",
+    "score": 3,
+    "reason": "Obscure Hono pun unclear to broad devs; niche reference kills relatability and viral spark despite corny dad-joke vibe.",
+    "timestamp": "2026-01-29T23:40:36.349383"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "cursor: pointer  \npoint my cursor life? straight to the bar ",
+    "score": 5,
+    "reason": "Solid CSS pun with dev-bar relatable vibe, but forced phrasing kills viral snap.",
+    "timestamp": "2026-01-29T23:39:09.477072"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "cursor ai  \ncursor my ai  \ncursor dead",
+    "x_response": "{'id': '2017095199030235598', 'text': 'cursor ai  \\ncursor my ai  \\ncursor dead', 'edit_history_tweet_ids': ['2017095199030235598']}",
+    "timestamp": "2026-01-29T23:39:06.029168"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "cursor ai  \ncursor my ai  \ncursor dead",
+    "score": 8,
+    "reason": "Strong dev pun on Cursor AI bugs/freezes; relatable frustration with solid corny spark, but punchline needs sharper twist for max virality.",
+    "timestamp": "2026-01-29T23:39:05.760521"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "react forget \u2192 ex compiler ships buttery smooth ",
+    "score": 6,
+    "reason": "Solid pun for React devs weary of re-renders, corny voice fits, but niche reference limits broad viral punch.",
+    "timestamp": "2026-01-29T23:38:48.881257"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "follow: me ;  \ntips: junior to medior pipe dream;  \noop: principes (sic);  \nhumor: counter-increment infinite",
+    "x_response": "{'edit_history_tweet_ids': ['2017088442971136194'], 'id': '2017088442971136194', 'text': 'follow: me ;  \\ntips: junior to medior pipe dream;  \\noop: principes (sic);  \\nhumor: counter-increment infinite'}",
+    "timestamp": "2026-01-29T23:12:15.258808"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "follow: me ;  \ntips: junior to medior pipe dream;  \noop: principes (sic);  \nhumor: counter-increment infinite",
+    "score": 8,
+    "reason": "Clever CSS syntax skewers dev woes like stalled promotions and typos; corny puns fit voice, viral format pops but counter-increment too niche.",
+    "timestamp": "2026-01-29T23:12:15.043144"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "vibe coding zero-installs zero hope left fr",
+    "score": 3,
+    "reason": "Relatable dev pain but zero puns, weak spark, feels like slang vomit not a banger.",
+    "timestamp": "2026-01-29T23:11:50.944431"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "docker compose\ndocker compose yourself ",
+    "x_response": "{'edit_history_tweet_ids': ['2017081838078923077'], 'id': '2017081838078923077', 'text': 'docker compose\\ndocker compose yourself'}",
+    "timestamp": "2026-01-29T22:46:00.535117"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "docker compose\ndocker compose yourself ",
+    "score": 8,
+    "reason": "Strong pun voice nails corny dev humor; highly relatable to Docker users' frustrations; viral spark from brevity but niche appeal caps it.",
+    "timestamp": "2026-01-29T22:46:00.189208"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "layer 1 dev tools testnet: 2 verified contracts both broken what a layer cake of hype ",
+    "score": 6,
+    "reason": "Decent crypto pun hits L1 hype frustration but too niche for broad devs, weak viral hook.",
+    "timestamp": "2026-01-29T22:42:34.874574"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "growing junior to medior   \noop principles and tips  \nreality: inheritance of infinite bugs ",
+    "score": 7,
+    "reason": "Solid OOP inheritance pun nails dev bug hell, relatable growth pains, but medior term narrows audience; punchy format boosts shareability.",
+    "timestamp": "2026-01-29T22:42:10.328379"
+  },
+  {
+    "type": "DEAL",
+    "status": "posting_error",
+    "error": "HTTPSConnectionPool(host='api.twitter.com', port=443): Read timed out. (read timeout=None)",
+    "content": "Dev career stalled w/o AWS cred?\n\nCrush Solutions Architect Associate cert: 100+hrs expert videos/labs, practice exams, lifetime access in this mega bundle - insane value steal!\n\nReady for 6-figure cloud gigs?\n\nhttps://stacksocial.com/sales/the-complete-2020-it-certification-exam-prep-mega-bundle?aid=a-kx0ebkzg",
+    "timestamp": "2026-01-29T22:41:47.652028"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "view-transition-name: hero;\nhero to zero transition fr",
+    "score": 6,
+    "reason": "Solid CSS pun fits dad-joke voice but too niche for broad dev relatability or viral punch.",
+    "timestamp": "2026-01-29T22:41:45.291036"
+  },
+  {
+    "type": "DEAL",
+    "attempt": 1,
+    "status": "approved",
+    "content": "Dev career stalled w/o AWS cred?\n\nCrush Solutions Architect Associate cert: 100+hrs expert videos/labs, practice exams, lifetime access in this mega bundle - insane value steal!\n\nReady for 6-figure cloud gigs?\n\nhttps://stacksocial.com/sales/the-complete-2020-it-certification-exam-prep-mega-bundle?aid=a-kx0ebkzg",
+    "score": 8,
+    "reason": "Perfect structure and scroll-stopping hooks for devs; strong problem-solution fit but docked for outdated \"2020\" bundle hurting value credibility.",
+    "timestamp": "2026-01-29T22:41:18.245507"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "cursor composer ai  \nmulti-file magic  \nuntil rm -rf src  \ncursor? curse-or ",
+    "x_response": "{'id': '2017066964846288898', 'edit_history_tweet_ids': ['2017066964846288898'], 'text': 'cursor composer ai  \\nmulti-file magic  \\nuntil rm -rf src  \\ncursor? curse-or'}",
+    "timestamp": "2026-01-29T21:46:54.478226"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "cursor composer ai  \nmulti-file magic  \nuntil rm -rf src  \ncursor? curse-or ",
+    "score": 9,
+    "reason": "Nails AI overreach fears with killer cursor/curse pun; dev gold, primed to spread.",
+    "timestamp": "2026-01-29T21:46:54.255125"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "duckdb  \nduck db duck my db duck dead",
+    "score": 3,
+    "reason": "Cryptic DuckDB pun on DB frustration lacks clarity; relatable only to niche fans, zero broad viral punch.",
+    "timestamp": "2026-01-29T21:46:19.519090"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "junior to medior  \njust mediocre never senior ",
+    "x_response": "{'id': '2017064809502548233', 'edit_history_tweet_ids': ['2017064809502548233'], 'text': 'junior to medior  \\njust mediocre never senior'}",
+    "timestamp": "2026-01-29T21:38:20.594279"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "approved",
+    "content": "junior to medior  \njust mediocre never senior ",
+    "score": 8,
+    "reason": "Punchy dev level pun nails mid-career rut; corny gold but \"medior\" too niche outside EU for max viral pop.",
+    "timestamp": "2026-01-29T21:38:20.398403"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "vibe coding --auto-approve  \ndestroy prod sanity auto ",
+    "score": 7,
+    "reason": "High dev relatability on vibe coding disasters, crisp CLI pun voice, solid viral hook but needs sharper punch.",
+    "timestamp": "2026-01-29T21:37:55.161617"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "next15? more like next quit  \nevery update=new funeral  \nfix one migration die inside ",
+    "score": 6,
+    "reason": "Solid Next.js pain points hit devs hard, but uneven puns and rough phrasing blunt the banger edge.",
+    "timestamp": "2026-01-29T21:37:29.136312"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "server-side rendering  \nserver side render server my render server surrender ",
+    "score": 7,
+    "reason": "Clever SSR pun captures dev fatigue, fits corny voice, but needs sharper twist for viral punch.",
+    "timestamp": "2026-01-29T21:19:06.465623"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "vibe coding vibe code my suicide note with chatgpt fr",
+    "score": 2,
+    "reason": "Edgy dark void lacks puns, relatable burnout trope drowned in suicide shock value, zero viral lift.",
+    "timestamp": "2026-01-29T21:18:17.917303"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "solid principles  \nsingle responsibility principle  \nresponsibly single forever",
+    "score": 6,
+    "reason": "Strong pun voice fit, middling dev relatability via stereotype, lacks broad viral hook.",
+    "timestamp": "2026-01-29T21:17:39.042575"
+  },
+  {
+    "type": "DEAL",
+    "status": "posted",
+    "content": "Busy devs: Burned out from endless coding marathons?\n\nMaster acoustic guitar beginner-to-pro: 80+ video lessons on chords, strums, solos, theory + song library. Lifetime access for $30 (97% off steal!).\n\nReady to unwind & rock?\n\nhttps://stacksocial.com/sales/the-complete-learn-to-master-the-guitar-bundle?aid=a-kx0ebkzg",
+    "x_response": "{'edit_history_tweet_ids': ['2017059587229098236'], 'text': 'Busy devs: Burned out from endless coding marathons?\\n\\nMaster acoustic guitar beginner-to-pro: 80+ video lessons on chords, strums, solos, theory + song library. Lifetime access for $30 (97% off steal!).\\n\\nReady to unwind &amp; rock?\\n\\nhttps://t.co/sbSoUYQ3RM', 'id': '2017059587229098236'}",
+    "timestamp": "2026-01-29T21:17:35.567447"
+  },
+  {
+    "type": "DEAL",
+    "attempt": 1,
+    "status": "approved",
+    "content": "Busy devs: Burned out from endless coding marathons?\n\nMaster acoustic guitar beginner-to-pro: 80+ video lessons on chords, strums, solos, theory + song library. Lifetime access for $30 (97% off steal!).\n\nReady to unwind & rock?\n\nhttps://stacksocial.com/sales/the-complete-learn-to-master-the-guitar-bundle?aid=a-kx0ebkzg",
+    "score": 8,
+    "reason": "Excellent structure and dev-targeted hook; solid burnout relief value but indirect productivity tie-in.",
+    "timestamp": "2026-01-29T21:17:35.242685"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "server actions: action; csrf nightmares persist ",
+    "score": 6,
+    "reason": "Clever code-syntax pun nails Next.js server actions frustration for framework devs, savage and nerdy, but niche limits viral explosion beyond React circles.",
+    "timestamp": "2026-01-29T21:04:44.063797"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "nextjs app router  \nnavigating life: lost af 404 errors everywhere  fr",
+    "score": 6,
+    "reason": "Solid Next.js pain point for devs, slang fits voice, but weak metaphor dilutes viral punch.",
+    "timestamp": "2026-01-29T21:04:21.935142"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "next 15 app router  \napp-routing my sanity straight to /404 ",
+    "x_response": "{'edit_history_tweet_ids': ['2017056202828509334'], 'text': 'next 15 app router  \\napp-routing my sanity straight to /404', 'id': '2017056202828509334'}",
+    "timestamp": "2026-01-29T21:04:08.622562"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "next 15 app router  \napp-routing my sanity straight to /404 ",
+    "score": 8,
+    "reason": "Punchy Next.js pun nails dev router rage; timely for v15 gripes with solid shareability in React hubs.",
+    "timestamp": "2026-01-29T21:04:08.346849"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "github copilot  \ncopilot co-pilots my pink slip straight to hr lmao ",
+    "score": 3,
+    "reason": "Middling relatability on AI job fears, but pun feels forced and lacks savage viral punch for dev X bangers.",
+    "timestamp": "2026-01-29T21:03:59.735244"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "prometheus alert firing  \nai subnet dev: 2 yrs exp 3 startups  \ntestnet contracts: 2 verified both ghosted  \nsoul critical low lmao",
+    "score": 7,
+    "reason": "Niche Prometheus format cleverly roasts web3 ghosting/burnout, relatable to devops/crypto crowds; savage lingo sparks shares but too specialized for broad virality.",
+    "timestamp": "2026-01-29T21:03:44.093284"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "o1 preview again o1 preview o1 my wallet dead fr",
+    "score": 7,
+    "reason": "Nails dev API cost pain and savage lingo, solid relatability/voice, but repetitive structure lacks killer twist for true banger virality.",
+    "timestamp": "2026-01-29T21:00:05.694768"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "railway rail way rail my way rail derailed \u2620\ufe0f",
+    "score": 5,
+    "reason": "Clever Railway pun hits niche dev pain but too obscure for mass viral; savage \u2620\ufe0f helps spark minimally.",
+    "timestamp": "2026-01-29T20:59:39.416569"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "cursor ai cursor my ai cursor dead",
+    "score": 4,
+    "reason": "Niche Cursor gripe relatable to heavy users but too cryptic and flat for viral dev shitpost punch.",
+    "timestamp": "2026-01-29T20:58:51.066537"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai promises bug free code  \nuntil runtime  \nai: bugs but make them mysterious \ud83d\udc80",
+    "x_response": "{'id': '2017048094844620916', 'text': 'ai promises bug free code  \\nuntil runtime  \\nai: bugs but make them mysterious \ud83d\udc80', 'edit_history_tweet_ids': ['2017048094844620916']}",
+    "timestamp": "2026-01-29T20:31:55.514205"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "approved",
+    "content": "ai promises bug free code  \nuntil runtime  \nai: bugs but make them mysterious \ud83d\udc80",
+    "score": 8,
+    "reason": "Peak dev pain + cynical lowercase vibe nails voice/relatability; viral punch solid but lacks twist for 10x shares.",
+    "timestamp": "2026-01-29T20:31:55.283660"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "prisma migrate  \nmigrated my sanity \ud83d\udc80",
+    "score": 7,
+    "reason": "Solid Prisma pain point for JS/TS devs, perfect cynical lowercase voice, but too niche for broad viral explosion.",
+    "timestamp": "2026-01-29T20:31:32.942690"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "ollama  \nollama ollama my llama ollama dead \ud83d\udc80",
+    "score": 5,
+    "reason": "Niche ollama crash pain relatable to ai devs but pun too forced, zero broad viral punch.",
+    "timestamp": "2026-01-29T20:31:03.742816"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai generates full app in 30s\n\none deploy: 500 error\n\nme: manually if statements for 3 hours \ud83d\ude2d\ud83d\udc80",
+    "x_response": "{'id': '2017044945262018755', 'edit_history_tweet_ids': ['2017044945262018755'], 'text': 'ai generates full app in 30s\\n\\none deploy: 500 error\\n\\nme: manually if statements for 3 hours \ud83d\ude2d\ud83d\udc80'}",
+    "timestamp": "2026-01-29T20:19:24.593582"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "ai generates full app in 30s\n\none deploy: 500 error\n\nme: manually if statements for 3 hours \ud83d\ude2d\ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev AI letdown relatable AF, nails lowercase cynicism, emojis ignite viral shares.",
+    "timestamp": "2026-01-29T20:19:24.390894"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "claude 3.5 sonnet coding better than me already \ud83d\udc80 time to become a prompt engineer \ud83d\ude2d",
+    "score": 7,
+    "reason": "Relatable dev anxiety hits, voice nails cynical lowercase vibe, but generic punchline kills viral punch.",
+    "timestamp": "2026-01-29T20:19:05.250008"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "out of memory\noom my sanity buffer zeroed \ud83d\udc80",
+    "x_response": "{'id': '2017043976323289173', 'text': 'out of memory\\noom my sanity buffer zeroed \ud83d\udc80', 'edit_history_tweet_ids': ['2017043976323289173']}",
+    "timestamp": "2026-01-29T20:15:33.583398"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "out of memory\noom my sanity buffer zeroed \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev pain + cynical lowercase banger, minor tweak for sharper punch.",
+    "timestamp": "2026-01-29T20:15:33.372115"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "content-visibility: auto;\nauto-hide my imposter syndrome? \nleaks in every commit \ud83d\ude2d",
+    "score": 6,
+    "reason": "relatable dev trope but css pun too niche for virality; voice cynical enough yet lacks punch.",
+    "timestamp": "2026-01-29T20:15:02.523543"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "langchain lang chain lang my chain lang dead",
+    "score": 5,
+    "reason": "Clever LangChain death knell pun resonates with AI devs' pain but too obscure phrasing kills mass virality.",
+    "timestamp": "2026-01-29T20:05:56.751766"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "follow me \u2728 junior medior oop principles tips humor ghost repo haunts skill infinite \ud83d\udc80",
+    "score": 4,
+    "reason": "Cryptic word salad obscures OOP/legacy repo pain point; low clarity kills relatability and shareability.",
+    "timestamp": "2026-01-29T20:05:16.198343"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "lifting state\nlifting state my depression higher",
+    "score": 7,
+    "reason": "React state-lifting pain is peak dev relatable with savage dark humor, punchy format sparks shares in nerd hubs but niche to JS crowd.",
+    "timestamp": "2026-01-29T20:04:54.088410"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "follow me \u2728 for tips from junior to medior  \nobject oriented despair principles  \ngeneral software suffering tips humor and so much more  \n\nmy mentions: infinite loop \ud83d\udc80",
+    "x_response": "{'id': '2017041282225377546', 'edit_history_tweet_ids': ['2017041282225377546'], 'text': 'follow me \u2728 for tips from junior to medior  \\nobject oriented despair principles  \\ngeneral software suffering tips humor and so much more  \\n\\nmy mentions: infinite loop \ud83d\udc80'}",
+    "timestamp": "2026-01-29T20:04:51.272118"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "approved",
+    "content": "follow me \u2728 for tips from junior to medior  \nobject oriented despair principles  \ngeneral software suffering tips humor and so much more  \n\nmy mentions: infinite loop \ud83d\udc80",
+    "score": 8,
+    "reason": "Killer OOP pun and infinite loop nod crush relatability/voice; viral hook strong but needs tighter punch.",
+    "timestamp": "2026-01-29T20:04:51.051893"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "building layer 1 / testnet: 2 verified contracts both dead \ud83d\udc80",
+    "score": 5,
+    "reason": "Niche L1 pain relatable only to blockchain devs; cynical voice fits but lacks broad viral hook.",
+    "timestamp": "2026-01-29T20:04:28.600453"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "turbopack \u2192 fast  \npack my bags fast \ud83d\udc80",
+    "score": 3,
+    "reason": "Vague pun lacks punch; turbopack hype doesn't tie cleanly to \"bags,\" killing relatability and spark.",
+    "timestamp": "2026-01-29T20:04:00.942352"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "o1 preview  \npreview of pain o1 \ud83d\udc80",
+    "x_response": "{'text': 'o1 preview  \\npreview of pain o1 \ud83d\udc80', 'id': '2017039443480244388', 'edit_history_tweet_ids': ['2017039443480244388']}",
+    "timestamp": "2026-01-29T19:57:32.885255"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "o1 preview  \npreview of pain o1 \ud83d\udc80",
+    "score": 8,
+    "reason": "Solid o1 pain jab\u2014relatable slowdown woes (8/10), peak cynical lowercase vibe (10/10), high viral punch on AI hype backlash (7/10).",
+    "timestamp": "2026-01-29T19:57:32.529793"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "ai dev tool hype\ntool: builds fullstack app in secs\ndeploys: kubernetes cluster yeets itself lmao",
+    "score": 7,
+    "reason": "Relatable K8s deployment fail after AI hype (8/10), savage dev lingo nails voice (9/10), but niche refs limit broad viral punch (5/10). Punchier format boosts it.",
+    "timestamp": "2026-01-29T19:54:43.354826"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "devin ai devin my ai devin dead",
+    "score": 3,
+    "reason": "Cryptic Devin nod lacks punch; relatable to niche hype skeptics but zero viral hook or savage snap for dev feeds.",
+    "timestamp": "2026-01-29T19:54:22.026420"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "next app router  \nroute fast regret eternal  \nspeedrun to loader hell \ud83d\udea8",
+    "score": 7,
+    "reason": "Niche Next.js pain (loader states suck) hits hard for React devs; haiku savage + speedrun lingo sparks shares, but too specific for mass viral.",
+    "timestamp": "2026-01-29T19:53:53.256117"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai pair programmer: writes flawless rust\n\nme: one semicolon wrong and it segfaults my brain \ud83d\udc80",
+    "x_response": "{'edit_history_tweet_ids': ['2017024471207493875'], 'text': 'ai pair programmer: writes flawless rust\\n\\nme: one semicolon wrong and it segfaults my brain \ud83d\udc80', 'id': '2017024471207493875'}",
+    "timestamp": "2026-01-29T18:58:03.247292"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "ai pair programmer: writes flawless rust\n\nme: one semicolon wrong and it segfaults my brain \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev relatability on Rust syntax hell, nails cynical lowercase voice, high viral punch from AI meme format.",
+    "timestamp": "2026-01-29T18:58:02.877233"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "shadcn: ui paradise  \ncopy paste bliss  \nuntil dark mode tweak  \nshadcn: css var hell \u2620\ufe0f",
+    "x_response": "{'edit_history_tweet_ids': ['2017021658519773521'], 'id': '2017021658519773521', 'text': 'shadcn: ui paradise  \\ncopy paste bliss  \\nuntil dark mode tweak  \\nshadcn: css var hell \u2620\ufe0f'}",
+    "timestamp": "2026-01-29T18:46:52.606904"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "shadcn: ui paradise  \ncopy paste bliss  \nuntil dark mode tweak  \nshadcn: css var hell \u2620\ufe0f",
+    "score": 8,
+    "reason": "Peak shadcn pain in cynical haiku hits dev nerves hard, viral RT bait.",
+    "timestamp": "2026-01-29T18:46:52.385447"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "v0 generate ui  \nv0 generate ui v0 generate unemployment \ud83d\udc80",
+    "score": 7,
+    "reason": "Relatable AI job anxiety hits dev pain point (8/10), perfect cynical lowercase voice (9/10), but v0 niche limits viral spark (5/10).",
+    "timestamp": "2026-01-29T18:46:16.530667"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "nextjs hydration  \nhydrate my soul pls  \nstill mismatched \ud83d\udc80",
+    "x_response": "{'id': '2017017654167413131', 'edit_history_tweet_ids': ['2017017654167413131'], 'text': 'nextjs hydration  \\nhydrate my soul pls  \\nstill mismatched \ud83d\udc80'}",
+    "timestamp": "2026-01-29T18:30:57.884259"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "nextjs hydration  \nhydrate my soul pls  \nstill mismatched \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev pain (hydration mismatch), nails cynical lowercase vibe, emoji drives shares.",
+    "timestamp": "2026-01-29T18:30:57.584653"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "react forget  \nbugs remember everything \ud83d\udc80",
+    "x_response": "{'id': '2017013844120424581', 'text': 'react forget  \\nbugs remember everything \ud83d\udc80', 'edit_history_tweet_ids': ['2017013844120424581']}",
+    "timestamp": "2026-01-29T18:15:49.522118"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "react forget  \nbugs remember everything \ud83d\udc80",
+    "score": 9,
+    "reason": "Niche React Forget pun crushes relatability for frontend devs; cynical lowercase vibe + \ud83d\udc80 screams viral banger.",
+    "timestamp": "2026-01-29T18:15:49.177918"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "zod.validate(my life)\n\n{ success: false, issues: [\"burnout\", \"imposter\"] } \ud83d\udc80",
+    "x_response": "{'text': 'zod.validate(my life)\\n\\n{ success: false, issues: [\"burnout\", \"imposter\"] } \ud83d\udc80', 'id': '2017011583608610816', 'edit_history_tweet_ids': ['2017011583608610816']}",
+    "timestamp": "2026-01-29T18:06:50.573881"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "zod.validate(my life)\n\n{ success: false, issues: [\"burnout\", \"imposter\"] } \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev relatability on burnout/imposter; nails lowercase cynical voice; Zod twist sparks shares in TS Twitter.",
+    "timestamp": "2026-01-29T18:06:50.218401"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai writing my tests: covers 100% passes everything\n\nai writing my code: segfaults on hello world \ud83d\udc80",
+    "x_response": "{'text': 'ai writing my tests: covers 100% passes everything\\n\\nai writing my code: segfaults on hello world \ud83d\udc80', 'edit_history_tweet_ids': ['2017008206044684634'], 'id': '2017008206044684634'}",
+    "timestamp": "2026-01-29T17:53:25.336711"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "ai writing my tests: covers 100% passes everything\n\nai writing my code: segfaults on hello world \ud83d\udc80",
+    "score": 8,
+    "reason": "Spot-on relatability (9) and cynical lowercase voice (10), but viral spark (7) dulled by familiar AI gripe.",
+    "timestamp": "2026-01-29T17:53:25.029544"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "new js framework: zero config tree shaking me: installs 47 plugins to make it work \ud83d\udc80\ud83d\ude2d",
+    "score": 7,
+    "reason": "High relatability and voice fit, but viral spark lacks fresh edge\u2014seen-this-before JS meme.",
+    "timestamp": "2026-01-29T17:52:58.819578"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "\"ship fast\"\n\nme: *feature flags everywhere*\n\nprod: flip wrong one boom \ud83d\udc80",
+    "x_response": "{'id': '2017006357589704745', 'edit_history_tweet_ids': ['2017006357589704745'], 'text': '\"ship fast\"\\n\\nme: *feature flags everywhere*\\n\\nprod: flip wrong one boom \ud83d\udc80'}",
+    "timestamp": "2026-01-29T17:46:04.598130"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "\"ship fast\"\n\nme: *feature flags everywhere*\n\nprod: flip wrong one boom \ud83d\udc80",
+    "score": 8,
+    "reason": "Peak dev relatable (flags gone wild), nails cynical lowercase vibe, emoji punch drives shares.",
+    "timestamp": "2026-01-29T17:46:04.203574"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai agents: \"i'll automate your devops\" proceeds to rm -rf / \ud83d\udc80",
+    "x_response": "{'id': '2016996295391461611', 'text': 'ai agents: \"i\\'ll automate your devops\" proceeds to rm -rf / \ud83d\udc80', 'edit_history_tweet_ids': ['2016996295391461611']}",
+    "timestamp": "2026-01-29T17:06:05.577766"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "ai agents: \"i'll automate your devops\" proceeds to rm -rf / \ud83d\udc80",
+    "score": 9,
+    "reason": "High dev relatability on AI fuckups, nails cynical lowercase voice, strong viral punch from rm -rf terror.",
+    "timestamp": "2026-01-29T17:06:05.203874"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "performance tab  \nperform my misery tab \ud83d\udc80",
+    "x_response": "{'edit_history_tweet_ids': ['2016990088488526171'], 'id': '2016990088488526171', 'text': 'performance tab  \\nperform my misery tab \ud83d\udc80'}",
+    "timestamp": "2026-01-29T16:41:25.709692"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "approved",
+    "content": "performance tab  \nperform my misery tab \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev pain in perf tab hell\u2014relatable AF, cynical lowercase banger with viral emoji punch.",
+    "timestamp": "2026-01-29T16:41:25.505263"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "useoptimistic updates optimistic my rollback life \u2620\ufe0f",
+    "score": 6,
+    "reason": "React niche hits hard for frontend devs but awkward phrasing kills punch and broad viral flow.",
+    "timestamp": "2026-01-29T16:40:15.774380"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "follow me \u2728 junior to medior oop principes dev tips humor copy-paste your soul \ud83d\udc80",
+    "score": 4,
+    "reason": "Typos (\"principes,\" \"medior\") kill relatability and polish; promo vibe lacks cynical punch for viral fire.",
+    "timestamp": "2026-01-29T16:39:08.127959"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "v0 dev again  \nv0 ai v0 my ui  \nv0 generate v0 dumpster fr \ud83d\udc80",
+    "score": 7,
+    "reason": "Relatable v0 trash gen gripe (8), peak cynical lowercase vibe (9), fun song hack but v0-niche limits blast radius (5).",
+    "timestamp": "2026-01-29T16:32:25.450730"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "follow me \u2728\njunior to medior oop principes \ud83d\udc80",
+    "score": 6,
+    "reason": "Relatable junior dev fail, nails cynical lowercase voice, but weak punchline and \"medior\" niche hurts viral pop.",
+    "timestamp": "2026-01-29T16:31:57.348110"
+  },
+  {
+    "type": "DEAL",
+    "status": "posted",
+    "content": "Coders: Stop sweaty nights tanking your productivity!\n\nBamboo 6pc Smart Pocket Sheets (Queen Ivory): cooling, ultra-soft bamboo; deep-grip pockets stay put. Luxe full set steal on StackSocial.\n\nSleep deeper, ship faster?\n\nhttps://stacksocial.com/sales/bamboo-6-piece-smart-pocket-sheets-ivory-queen?aid=a-kx0ebkzg",
+    "x_response": "{'id': '2016987606693613681', 'edit_history_tweet_ids': ['2016987606693613681'], 'text': 'Coders: Stop sweaty nights tanking your productivity!\\n\\nBamboo 6pc Smart Pocket Sheets (Queen Ivory): cooling, ultra-soft bamboo; deep-grip pockets stay put. Luxe full set steal on StackSocial.\\n\\nSleep deeper, ship faster?\\n\\nhttps://t.co/bPFvGPM9Fc'}",
+    "timestamp": "2026-01-29T16:31:34.053314"
+  },
+  {
+    "type": "DEAL",
+    "attempt": 1,
+    "status": "approved",
+    "content": "Coders: Stop sweaty nights tanking your productivity!\n\nBamboo 6pc Smart Pocket Sheets (Queen Ivory): cooling, ultra-soft bamboo; deep-grip pockets stay put. Luxe full set steal on StackSocial.\n\nSleep deeper, ship faster?\n\nhttps://stacksocial.com/sales/bamboo-6-piece-smart-pocket-sheets-ivory-queen?aid=a-kx0ebkzg",
+    "score": 8,
+    "reason": "Solid dev-targeted productivity tie-in via sleep, perfect structure, strong scroll-stopping hook with \"ship faster,\" but product slightly tangential to core coding tools.",
+    "timestamp": "2026-01-29T16:31:33.691716"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "o1 reasoning  \nai layoffs explained \u2620\ufe0f",
+    "score": 7,
+    "reason": "Timely o1 jab hits dev job fears, nails cynical lowercase voice, solid viral punch but slightly niche.",
+    "timestamp": "2026-01-29T16:31:32.356108"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "ai coding 10x faster? now i got 10x the features to babysit \ud83d\udc80",
+    "x_response": "{'edit_history_tweet_ids': ['2016985957551976865'], 'id': '2016985957551976865', 'text': 'ai coding 10x faster? now i got 10x the features to babysit \ud83d\udc80'}",
+    "timestamp": "2026-01-29T16:25:00.847607"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "ai coding 10x faster? now i got 10x the features to babysit \ud83d\udc80",
+    "score": 9,
+    "reason": "Nails dev pain of AI bloat, voice is peak cynical lowercase, emoji sparks shares.",
+    "timestamp": "2026-01-29T16:25:00.417676"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "useoptimistic() {\n\n  state: delusion;\n\n}\n\nreality: server error \ud83d\udc80",
+    "x_response": "{'text': 'useoptimistic() {\\n\\n  state: delusion;\\n\\n}\\n\\nreality: server error \ud83d\udc80', 'id': '2016759337864048739', 'edit_history_tweet_ids': ['2016759337864048739']}",
+    "timestamp": "2026-01-29T01:24:30.486176"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "approved",
+    "content": "useoptimistic() {\n\n  state: delusion;\n\n}\n\nreality: server error \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev pain in optimistic updates, cynical code flex, emoji seals viral punch\u2014prime X banger.",
+    "timestamp": "2026-01-29T01:24:30.296324"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "rejected",
+    "content": "devs lift weights and cardio / or your commits stay soft \ud83d\udc80 cc @pbertrand_dev",
+    "score": 5,
+    "reason": "Pun too vague (\"soft commits?\"); relatable gym-dev trope but lacks punch for virality.",
+    "timestamp": "2026-01-29T01:24:08.583920"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "nextjs app router  \napp my sanity: router to 404 \ud83d\udc80",
+    "score": 6,
+    "reason": "Solid Next.js pain point and cynical vibe, but pun feels forced\u2014needs sharper twist for viral punch.",
+    "timestamp": "2026-01-29T01:23:36.095411"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "app router genius  \nuntil nested parallel  \n/app/(marketing)/(auth)/[slug]/page.tsx \ud83d\udc80",
+    "x_response": "{'text': 'app router genius  \\nuntil nested parallel  \\n/app/(marketing)/(auth)/[slug]/page.tsx \ud83d\udc80', 'id': '2016758973500645804', 'edit_history_tweet_ids': ['2016758973500645804']}",
+    "timestamp": "2026-01-29T01:23:03.615057"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "approved",
+    "content": "app router genius  \nuntil nested parallel  \n/app/(marketing)/(auth)/[slug]/page.tsx \ud83d\udc80",
+    "score": 8,
+    "reason": "Peak Next.js pain, nails cynical lowercase vibe, primed to slap in dev circles.",
+    "timestamp": "2026-01-29T01:23:03.311970"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "github copilot  \ncopilot: writes my code  \npilots my job to unemployment \ud83d\udc80",
+    "x_response": "{'edit_history_tweet_ids': ['2016752613631365566'], 'id': '2016752613631365566', 'text': 'github copilot  \\ncopilot: writes my code  \\npilots my job to unemployment \ud83d\udc80'}",
+    "timestamp": "2026-01-29T00:57:47.332288"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "github copilot  \ncopilot: writes my code  \npilots my job to unemployment \ud83d\udc80",
+    "score": 8,
+    "reason": "Sharp Copilot pun nails dev job fears; cynical, lowercase vibe with \ud83d\udc80 spark for viral shares.",
+    "timestamp": "2026-01-29T00:57:47.107075"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "founder mode  \nfounder my delusion max \ud83d\udc80",
+    "score": 5,
+    "reason": "Niche founder ref relatable to startup devs but cryptic punchline lacks punch; solid voice, weak virality.",
+    "timestamp": "2026-01-29T00:57:24.510084"
+  },
+  {
+    "type": "JOKE",
+    "status": "posted",
+    "content": "cursor composer \u2192 multi file magic  \none prompt regret hell \ud83d\udc80",
+    "x_response": "{'id': '2016747043801182563', 'edit_history_tweet_ids': ['2016747043801182563'], 'text': 'cursor composer \u2192 multi file magic  \\none prompt regret hell \ud83d\udc80'}",
+    "timestamp": "2026-01-29T00:35:39.388843"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 2,
+    "status": "approved",
+    "content": "cursor composer \u2192 multi file magic  \none prompt regret hell \ud83d\udc80",
+    "score": 9,
+    "reason": "Peak dev pain\u2014cursor's multi-file promises shatter into prompt-induced chaos; cynical, punchy, emoji seals viral doom-scroll bait.",
+    "timestamp": "2026-01-29T00:35:39.152526"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 1,
+    "status": "rejected",
+    "content": "grok ai\ngrok ai grok my ai grok dead \ud83d\udc80",
+    "score": 4,
+    "reason": "Clever lullaby pun but too niche for broad dev relatability; voice fits but viral spark fumbles on obscurity.",
+    "timestamp": "2026-01-29T00:35:13.607579"
+  },
+  {
+    "type": "JOKE",
+    "attempt": 3,
+    "status": "rejected",
+    "content": "follow me \u2728  \noop principes  \njunior medior \ud83d\udc80",
+    "score": 4,
+    "reason": "Solid cynical voice and dev nod to junior delusions, but \"principes\" too obscure for max relatability/viral punch.",
+    "timestamp": "2026-01-29T00:06:41.735804"
+  }
+]

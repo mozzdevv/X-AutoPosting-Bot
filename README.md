@@ -1,108 +1,303 @@
-# 🤖 X AutoBot
+# 🔥 DevUnfiltered Bot - High-Engagement X (Twitter) Bot
 
-**Grok 4.1-fueled dual-agent predator: 90% cynical dev humor laced with viral X trend venom, 10% autonomous SaaS deal dissection. Posts only what slays—self-reviewed, macOS-persistent, dashboarded for total dominion.**
+**Unfiltered tech takes that start arguments**
 
-This isn't your grandma's tweet scheduler. X AutoBot wields xAI's Grok 4.1 API in a Creator-Reviewer deathmatch: scouts X trends for hooks, forges posts mimicking 210jokes' lowercase snark, researches SaaS value props with surgical precision (Opener → Value → Hook → Link), scores ruthlessly for virality/relatability, and deploys only 8/10+ killers. Random sleeps mimic humans; crashes? It resurrects.
+An AI-powered X (Twitter) bot that generates controversial developer opinions and relatable tech humor designed to maximize engagement and build followers.
 
-Zero humans in the loop. Pure autonomy.
+## 🎯 Strategy
 
-## 🧠 Dual-Agent Annihilation Loop
+**Content Mix:**
+- 70% Controversial opinions (drive replies and debates)
+- 30% Relatable developer situations (drive "me too" engagement)
 
-```mermaid
-graph TD
-    Start((Cycle Ignition)) --> TrendScan[Viral Trend Sense<br/>X API Trends]
-    TrendScan --> Decide{90% Joke<br/>10% Deal?}
-    Decide -- "Joke" --> CreatorJ[Joke Creator<br/>Few-Shot 210jokes + Trends]
-    Decide -- "Deal" --> CreatorD[Deal Creator<br/>CSV Pull + Value Prop Research]
-    
-    CreatorJ --> Draft[Draft Forge]
-    CreatorD --> Draft
-    
-    Draft --> Reviewer[<b>Reviewer Agent</b><br/>Grok 4.1 Scores: Wit/Viral/Chars<br/>0-10 Threshold]
-    
-    Reviewer -- "<8 → Retry ≤3x" --> RetryLoop{Retry?}
-    RetryLoop -- "Yes" --> Draft
-    RetryLoop -- "No" --> FailLog[Fail Log → JSON]
-    
-    Reviewer -- "≥8 → Deploy" --> XBlast[X V2 API Post]
-    XBlast --> SuccessLog[Success JSON + History]
-    
-    SuccessLog --> Sleep[Human Mimic Sleep<br/>25m–2h Uniform Random]
-    FailLog --> Sleep
-    Sleep --> Start
-```
+**Posting Schedule:**
+- 2-3 posts per day
+- Random delays between 4-8 hours (mimics human behavior)
+- All posts scored 8/10+ by AI reviewer before posting
 
-**Technical Edge**: Creator leverages few-shot prompting from `210jokes` DB + real-time X trends for context-aware cynicism. Deals auto-parse `Final Sales List.csv` (Col L: Product, Col O: Affiliate). Reviewer enforces brand voice, 280-char limits, viral coefficients.
+**Algorithm Optimization (Jan 2026):**
+- Every post includes engagement hooks (questions, CTAs, emojis)
+- Optimized for reply generation (top engagement signal)
+- Native content only (no external links)
+- Trending topic integration
 
-## ⚡ Battle-Hardened Features
-- **Trend-Predatory Creator**: Fuses X trends with 210jokes corpus for hyper-relevant, lowercase dev barbs that trendjack virality.
-- **SaaS Sniper**: Hunts deals via CSV, Grok-dissects value props into addictive *Opener → Value → Hook → Link* structures. Affiliate-ready.
-- **Merciless Reviewer**: Independent Grok 4.1 instance rates drafts on relatability (40%), viral spark (40%), tech-fit (20%). No mercy below 8.
-- **Human Evasion**: Uniform random delays (25m–2h); idempotent posting guards duplicates.
-- **macOS Daemon**: Launchd plist auto-resurrects on boot/crash. Silent, bulletproof.
-- **Streamlit War Room**: Real-time logs, post history, next-strike countdown. Zero bloat.
+## 📋 Features
 
-## 🚀 Deployment Arsenal
+- **Dual-Agent Architecture**: Creator generates content, Reviewer scores quality
+- **Trending Topic Integration**: Pulls current tech trends to inform content
+- **Quality Control**: Only posts scoring 8/10+ with engagement hooks
+- **Topic Variety Management**: Tracks recent topics to avoid repetition
+- **Real-Time Dashboard**: Streamlit dashboard shows metrics and post history
+- **Automatic Retry Logic**: Regenerates content up to 3x if quality too low
+- **Human-Like Timing**: Random delays between posts to avoid bot detection
+
+## 🚀 Quick Start
 
 ### Prerequisites
-Python 3.10+, virtualenv ritual:
+
+- Python 3.10+
+- X (Twitter) Developer Account with API credentials
+- xAI API key (for Grok 4.1)
+- macOS/Linux (for daemon features) or Windows
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/X-AutoPosting-Bot.git
+cd X-AutoPosting-Bot
+```
+
+2. **Create virtual environment**
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate  # macOS: source .venv/bin/activate
-pip install -r requirements.txt
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-Populate `.env`:
-```
-XAI_API_KEY=your_grok_key
-X_BEARER_TOKEN=your_x_v2_bearer
-X_API_KEY=...
-X_API_SECRET=...
-```
-
-### Ignite the Beast
+3. **Install dependencies**
 ```bash
-nohup ./.venv/bin/python main_bot.py &  # Daemonize
+pip install -r requirements_updated.txt
 ```
 
-### Command Center
+4. **Set up environment variables**
 ```bash
-./.venv/bin/streamlit run dashboard.py  # http://localhost:8501
+cp .env.example .env
+# Edit .env with your API credentials
 ```
 
-## ♾️ Local Persistence (Automatic Startup)
+Required credentials in `.env`:
+```bash
+# X API Credentials (from https://developer.twitter.com)
+X_BEARER_TOKEN=your_bearer_token
+X_API_KEY=your_api_key
+X_API_SECRET=your_api_secret
+X_ACCESS_TOKEN=your_access_token
+X_ACCESS_TOKEN_SECRET=your_access_token_secret
 
-To ensure the bot starts automatically every time you log in to your Mac:
+# xAI Grok API Key (from https://x.ai/api)
+XAI_API_KEY=your_xai_key
 
-1. **Copy the configuration**:
-   ```bash
-   cp com.mazo.xautobot.plist ~/Library/LaunchAgents/
-   ```
-2. **Load the service**:
-   ```bash
-   launchctl load ~/Library/LaunchAgents/com.mazo.xautobot.plist
-   ```
+# Bot Configuration
+POST_FREQUENCY_HOURS_MIN=4
+POST_FREQUENCY_HOURS_MAX=8
+CONTROVERSIAL_WEIGHT=70
+RELATABLE_WEIGHT=30
+MIN_SCORE_THRESHOLD=8
+```
 
-**Verify**: Check your active tasks in the terminal: `launchctl list | grep xautobot`.
-**Stop**: `launchctl unload ~/Library/LaunchAgents/com.mazo.xautobot.plist`
+### Running the Bot
 
-## 🗂️ Core Payload
+**Start the bot:**
+```bash
+python main_bot_updated.py
+```
 
-## 🗂️ Core Payload
-- `main_bot.py`: Orchestrator/scheduler core.
-- `agents.py`: CreatorAgent/ReviewerAgent (Grok 4.1 prompts).
-- `content_manager.py`: CSV/jokes loader/parser.
-- `xai_wrapper.py`: Grok 4.1 API shield.
-- `x_handler.py`: X V2 API blaster (trends/posts).
-- `bot_activity.json`: Live audit trail.
-- `posted_history.json`: Victory archive.
-- `Final Sales List.csv`: Deal munitions.
-- `210jokes`: Cynicism database.
+**Run in background (macOS/Linux):**
+```bash
+nohup python main_bot_updated.py &
+```
 
-## 📈 Intelligence Dashboard
-Streamlit renders:
-- **Live Feed**: Generations, scores, rejections.
-- **Kill List**: Posted tweets + timestamps/links.
-- **Doomsday Clock**: ETA to next post.
+**View dashboard:**
+```bash
+streamlit run dashboard_updated.py
+```
+Then open http://localhost:8501 in your browser
 
-Scale. Dominate. Let the feeds burn.
+### Testing Before Deployment
+
+**Test content generation:**
+```bash
+python agents_updated.py
+```
+This will generate 3 controversial and 3 relatable posts with scores.
+
+**Test X API connection:**
+```bash
+python x_handler_updated.py
+```
+Verifies credentials and tests trend fetching.
+
+**Test topic management:**
+```bash
+python content_manager_updated.py
+```
+Tests topic tracking and suggestion system.
+
+## 📊 Dashboard Features
+
+The Streamlit dashboard (`dashboard_updated.py`) provides:
+
+- **Real-time metrics**: Success rate, total posts, rejections
+- **Performance charts**: Posts per day, content type distribution, score distribution
+- **Post history**: View all posted content with scores and links
+- **Rejection analysis**: See what content was rejected and why
+- **Topic analytics**: Track most-used topics and variety
+
+## 🏗️ Architecture
+
+### File Structure
+```
+X-AutoPosting-Bot/
+├── main_bot_updated.py          # Main bot orchestrator
+├── agents_updated.py             # Creator & Reviewer agents
+├── x_handler_updated.py          # X API wrapper
+├── content_manager_updated.py    # Topic management
+├── dashboard_updated.py          # Streamlit dashboard
+├── xai_wrapper.py                # Grok API wrapper (from original)
+├── requirements_updated.txt      # Python dependencies
+├── .env                          # API credentials (not in git)
+├── .env.example                  # Example environment file
+├── bot_activity.json             # Bot activity log
+├── posted_history.json           # Posted content history
+└── topic_history.json            # Topic usage tracking
+```
+
+### How It Works
+
+1. **Content Selection**: Bot randomly selects content type (70% controversial, 30% relatable)
+
+2. **Trend Integration**: Fetches current tech trending topics from X API
+
+3. **Content Generation**: CreatorAgent uses Grok 4.1 to generate post based on:
+   - Content type
+   - Trending topics
+   - Evergreen dev topics
+   - Engagement optimization rules
+
+4. **Quality Review**: ReviewerAgent scores post 0-10 on:
+   - Engagement potential (50%): Has hooks, drives replies
+   - Controversy/Interest (30%): Thought-provoking, specific
+   - Quality (20%): Grammar, length, tone
+
+5. **Approval Gate**: Post must score ≥8 AND have engagement hook
+
+6. **Posting**: If approved, posts to X via API
+
+7. **Logging**: Records success/failure and updates metrics
+
+8. **Sleep**: Random delay 4-8 hours, then repeat
+
+## ⚙️ Configuration
+
+### Posting Frequency
+Adjust in `.env`:
+```bash
+POST_FREQUENCY_HOURS_MIN=4  # Minimum hours between posts
+POST_FREQUENCY_HOURS_MAX=8  # Maximum hours between posts
+```
+
+### Content Mix
+Adjust percentages in `.env` (must add to 100):
+```bash
+CONTROVERSIAL_WEIGHT=70  # 70% controversial
+RELATABLE_WEIGHT=30      # 30% relatable
+```
+
+### Quality Threshold
+Adjust minimum score required:
+```bash
+MIN_SCORE_THRESHOLD=8  # Only post if scored 8/10 or higher
+```
+
+## 🔧 Customization
+
+### Adding New Content Types
+
+Edit `agents_updated.py` to add new content type:
+
+```python
+def _get_new_type_prompt(self, trending_context):
+    return """Your custom prompt here..."""
+```
+
+Then update `select_content_type()` in `main_bot_updated.py`.
+
+### Modifying Review Criteria
+
+Edit `_get_evaluation_prompt()` in `agents_updated.py` to change scoring weights or criteria.
+
+### Custom Trending Topics
+
+Edit `_get_fallback_trends()` in `x_handler_updated.py` to customize evergreen topics.
+
+## 📈 Metrics & Analytics
+
+The bot tracks:
+
+- **Total posts**: All posting attempts
+- **Successful posts**: Posts actually published
+- **Failed posts**: Posts that failed to publish
+- **Rejections**: Posts that didn't meet quality threshold
+- **Content type distribution**: Controversial vs relatable ratio
+- **Score distribution**: Quality scores over time
+- **Topic usage**: Most/least used topics
+
+Access via dashboard or directly in JSON files.
+
+## 🚨 Troubleshooting
+
+### Bot won't post
+- Check X API credentials in `.env`
+- Verify account has posting permissions
+- Check `bot_activity.json` for error messages
+
+### All posts get rejected
+- Lower `MIN_SCORE_THRESHOLD` in `.env` to 7
+- Check `bot_activity.json` rejections for feedback
+- Run `python agents_updated.py` to test generation
+
+### No trending topics
+- Bot falls back to evergreen topics automatically
+- Trending requires X API Premium (optional)
+
+### Dashboard won't load
+- Ensure Streamlit installed: `pip install streamlit`
+- Check port 8501 isn't in use
+- Try different port: `streamlit run dashboard_updated.py --server.port 8502`
+
+## 🔐 Security Notes
+
+- Never commit `.env` file (already in `.gitignore`)
+- Rotate API keys regularly
+- Don't share `bot_activity.json` publicly (contains post history)
+- Use environment variables for all credentials
+
+## 📝 License
+
+MIT License - See LICENSE file for details
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## 📧 Support
+
+For issues or questions:
+- Open GitHub issue
+- Check existing issues first
+- Include error messages and logs
+
+## 🎯 Roadmap
+
+- [ ] Multi-account support
+- [ ] Automated reply functionality
+- [ ] Thread generation for long-form content
+- [ ] A/B testing for content types
+- [ ] Integration with analytics platforms
+- [ ] Scheduled posting calendar
+- [ ] Content calendar planning
+- [ ] Automated engagement tracking
+
+---
+
+**Built with:**
+- Python 3.10+
+- xAI Grok 4.1
+- Tweepy (X API v2)
+- Streamlit
+- Love for unfiltered dev takes 🔥
