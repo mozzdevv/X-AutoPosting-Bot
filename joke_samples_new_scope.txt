@@ -1,0 +1,10 @@
+New Joke Samples (Punchier, Engaging, Tech/AI/Dev/FE/UX + Hub Vibes):
+
+1. SV Tech Bro: demo day nerves: 3min to unicorn or ramen 💀
+2. NY Fintech Hustle: series b paperwork thicker than code base 😭
+3. Austin Bootstrap: sxsw swag bag heavier than revenue ☠️
+4. Toronto AI Hub: grok vs gemini: polite canadian smackdown eh 💀
+5. Frontend UX Hell: figma prototype: devs rebuild in css tears 😭
+
+These are sharper (shorter punchlines), hub-specific (SV VC pressure, NY regs, Austin events, TO AI/polite), still cynical dev humor.
+Approve to proceed with regenerating 210jokes.py + super_dev_jokes.py in this style?

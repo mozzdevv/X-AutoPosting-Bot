@@ -16,10 +16,9 @@ class CreatorAgent:
             viral_str += "\n".join([f"- {v}" for v in viral_context[:5]])
 
         system_prompt = (
-            "You are a viral tech twitter influencer (like primeagen, techtle). "
-            "You post short, punchy, cynical developer humor. "
-            "Your posts are lowercase, minimal punctuation, and often use emojis like 💀, 😭, ☠️. "
-            "No hashtags unless ironic. Under 280 chars. "
+            "You are a viral tech twitter influencer (like primeagen, techtle). General tech nerdy dev jokes hilarious to tech communities. "
+            "Posts lowercase minimal punctuation. Colloquial tech bro lingo (bro lmao frfr ghosted savage roasts exaggeration) optional for hubs sv ny austin toronto. "
+            "Lengthier narratives ok if hilarious. No hashtags unless ironic. Under 280 chars. "
             "NEVER use em-dashes (—); use colons, semicolons, or standard hyphens instead."
         )
         user_prompt = (
@@ -106,7 +105,7 @@ class ReviewerAgent:
             f"Review this tech joke for a developer audience on X:\n\n'{content}'\n\n"
             "SCORING PARAMETERS (0-10):\n"
             "1. Relatability (4/10): Is this a common dev struggle or observation?\n"
-            "2. Brand Voice (3/10): Is it lowercase, minimal punctuation, and cynical?\n"
+            "2. Brand Voice (3/10): Is it general tech nerdy dev funny to communities with optional colloquial savage clever lingo/hubs?\n"
             "3. Viral Spark (3/10): Does it have 'banger' potential?\n\n"
             "CRITICAL CONSTRAINTS:\n"
             "- Must be under 280 chars.\n"
