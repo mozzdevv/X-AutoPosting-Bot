@@ -219,11 +219,13 @@ class EngagementBot:
             reply_text = creator.generate_reply(tweet.text, "User")
             if reply_text:
                 print(f"Generated Reply to @{author_id}: {reply_text}")
-                url = self.x_handler.reply_to_tweet(tweet.id, reply_text)
+                url, error = self.x_handler.reply_to_tweet(tweet.id, reply_text)
                 if url:
                     print(f"✅ Replied successfully: {url}")
                     # Update tracking
                     tracking[track_key] = current_count + 1
+                else:
+                    print(f"❌ Reply failed: {error}")
                 
             self.last_mention_id = tweet.id
             self.activity['last_mention_id'] = self.last_mention_id
@@ -376,7 +378,7 @@ class EngagementBot:
         # Attempt to post to X
         print(f"\n📤 Attempting to post to X...")
         try:
-            post_url = self.x_handler.post_tweet(post_text)
+            post_url, error = self.x_handler.post_tweet(post_text)
             
             if post_url:
                 print(f"\n✅ POST SUCCESSFUL!")
@@ -395,8 +397,8 @@ class EngagementBot:
                 
                 return True
             else:
-                print("\n❌ POST FAILED - X API returned no URL")
-                self.log_failure(post_text, "No URL returned from X API", content_type)
+                print(f"\n❌ POST FAILED - Error: {error}")
+                self.log_failure(post_text, error or "No URL returned from X API", content_type)
                 return False
                 
         except Exception as e:

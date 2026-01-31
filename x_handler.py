@@ -46,7 +46,7 @@ class XHandler:
             text (str): Tweet content (max 280 chars)
             
         Returns:
-            str: URL to the posted tweet, or None if failed
+            tuple: (url, error_message) - url is None if failed, error_message is None if success
         """
         try:
             # Ensure text is under 280 characters
@@ -59,20 +59,19 @@ class XHandler:
             
             if response.data:
                 tweet_id = response.data['id']
-                # Construct URL to tweet
-                # Note: You'll need to replace 'YourUsername' with actual username
                 tweet_url = f"https://x.com/DevUnfiltered/status/{tweet_id}"
-                return tweet_url
+                return tweet_url, None
             else:
-                print("❌ Tweet posting failed - no response data")
-                return None
+                return None, "No response data from X API"
                 
         except tweepy.TweepyException as e:
-            print(f"❌ Tweepy error: {e}")
-            return None
+            error_msg = str(e)
+            print(f"❌ Tweepy error: {error_msg}")
+            return None, error_msg
         except Exception as e:
-            print(f"❌ Unexpected error posting tweet: {e}")
-            return None
+            error_msg = str(e)
+            print(f"❌ Unexpected error posting tweet: {error_msg}")
+            return None, error_msg
     
     def get_tech_trends(self, count=5):
         """
@@ -298,7 +297,7 @@ class XHandler:
             text (str): Reply content
             
         Returns:
-            str: URL of the reply tweet
+            tuple: (url, error_message)
         """
         try:
             response = self.client.create_tweet(
@@ -308,11 +307,12 @@ class XHandler:
             
             if response.data:
                 reply_id = response.data['id']
-                return f"https://x.com/DevUnfiltered/status/{reply_id}"
-            return None
+                return f"https://x.com/DevUnfiltered/status/{reply_id}", None
+            return None, "No response data from X API"
         except Exception as e:
-            print(f"❌ Error replying to tweet: {e}")
-            return None
+            error_msg = str(e)
+            print(f"❌ Error replying to tweet: {error_msg}")
+            return None, error_msg
 
     def get_tweet_metrics(self, tweet_id):
         """

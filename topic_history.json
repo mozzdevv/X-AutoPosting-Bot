@@ -1,30 +1,6 @@
 {
   "topics": [
     {
-      "topic": "Job hopping strategy",
-      "timestamp": "2026-01-30T00:27:03.897399"
-    },
-    {
-      "topic": "Angular still relevant?",
-      "timestamp": "2026-01-30T00:27:03.897810"
-    },
-    {
-      "topic": "Clean code principles",
-      "timestamp": "2026-01-30T00:27:03.898123"
-    },
-    {
-      "topic": "Developer burnout",
-      "timestamp": "2026-01-30T00:28:08.121107"
-    },
-    {
-      "topic": "Developer productivity metrics",
-      "timestamp": "2026-01-30T00:28:08.121721"
-    },
-    {
-      "topic": "Claude vs ChatGPT for code",
-      "timestamp": "2026-01-30T00:28:08.122131"
-    },
-    {
       "topic": "Tech layoffs 2026",
       "timestamp": "2026-01-30T00:30:20.191971"
     },
@@ -187,7 +163,43 @@
     {
       "topic": "GitHub Trend: forrestchang/andrej-karpathy-skills (None, 2697 stars) - None",
       "timestamp": "2026-01-30T10:41:52.545792"
+    },
+    {
+      "topic": "Quantum computing timeline",
+      "timestamp": "2026-01-30T19:25:09.458754"
+    },
+    {
+      "topic": "React vs Vue 2026",
+      "timestamp": "2026-01-30T19:25:09.459963"
+    },
+    {
+      "topic": "Next.js vs Remix",
+      "timestamp": "2026-01-30T19:25:09.461092"
+    },
+    {
+      "topic": "Hacker News: Antirender: remove the glossy shine on architectural renderings (https://antirender.com/)",
+      "timestamp": "2026-01-30T19:25:09.461999"
+    },
+    {
+      "topic": "Hacker News: Peerweb: Decentralized website hosting via WebTorrent (https://peerweb.lol/)",
+      "timestamp": "2026-01-30T19:25:09.462991"
+    },
+    {
+      "topic": "Hacker News: Show HN: I built an AI conversation partner to practice speaking languages (https://apps.apple.com/us/app/talkbits-speak-naturally/id6756824177)",
+      "timestamp": "2026-01-30T19:25:09.463784"
+    },
+    {
+      "topic": "GitHub Trend: VoltAgent/awesome-openclaw-skills (None, 4156 stars) - The awesome collection of OpenClaw Skills. Formerly known as Moltbot, originally Clawdbot.",
+      "timestamp": "2026-01-30T19:25:09.464557"
+    },
+    {
+      "topic": "GitHub Trend: lukilabs/beautiful-mermaid (TypeScript, 3761 stars) - None",
+      "timestamp": "2026-01-30T19:25:09.465345"
+    },
+    {
+      "topic": "GitHub Trend: forrestchang/andrej-karpathy-skills (None, 2924 stars) - None",
+      "timestamp": "2026-01-30T19:25:09.465975"
     }
   ],
-  "last_updated": "2026-01-30T10:41:52.545801"
+  "last_updated": "2026-01-30T19:25:09.465980"
 }
